@@ -24,6 +24,15 @@ header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top
 .admin-link svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:2;
  stroke-linecap:round;stroke-linejoin:round}
 .admin-link:focus-visible,.home:focus-visible{outline:3px solid #b9d6fa;outline-offset:2px}
+.admin-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:18px;background:rgba(15,35,60,.58)}
+.admin-modal.hidden{display:none!important}
+.admin-dialog{position:relative;width:min(980px,100%);height:min(780px,92vh);background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.25);display:flex;flex-direction:column}
+.admin-modal-head{height:56px;flex:0 0 56px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid var(--border);color:var(--blue);font-weight:bold}
+.admin-close{width:36px;height:36px;border:0;border-radius:10px;background:#f1f5f9;color:#334155;font-size:24px;line-height:1;cursor:pointer}
+.admin-frame{width:100%;height:100%;border:0;background:#f4f7fb}
+body.modal-open{overflow:hidden}
+@media(max-width:700px){.admin-modal{padding:0}.admin-dialog{width:100%;height:100%;max-height:100%;border-radius:0}.admin-modal-head{height:52px;flex-basis:52px}}
+
 
 main{max-width:1120px;margin:auto;padding:28px 20px 60px}
 h1{color:var(--blue);font-size:26px;margin:0 0 8px}
@@ -80,18 +89,26 @@ main{padding:22px 15px 45px}h1{font-size:23px}
   </a>
   <div class="header-actions">
    <a class="home" href="https://genius-kecil-portal.rt2000-innovation.workers.dev/">Beranda</a>
-   <a class="admin-link"
-      href="https://script.google.com/macros/s/AKfycbxB8_JF6PrDj0TLbOff1VYLtfvTQ7w6Pf_xDY8JszolRviRljgNJPcZ9AJPPGZDEQZBXg/exec?admin=1"
-      target="_blank" rel="noopener"
-      title="Admin Genius Kecil" aria-label="Buka Admin Genius Kecil">
+   <button class="admin-link" id="openAdmin" type="button"
+      title="Admin Genius Kecil" aria-label="Buka Admin Genius Kecil" aria-haspopup="dialog">
     <svg viewBox="0 0 24 24" aria-hidden="true">
      <circle cx="12" cy="12" r="3"></circle>
      <path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-1.7 2.94-.08-.02a1.7 1.7 0 0 0-1.75.48l-.06.06h-3.4l-.02-.08a1.7 1.7 0 0 0-1.2-1.2l-.08-.02-1.7-2.94.06-.06A1.7 1.7 0 0 0 10.2 14.2l-.02-.08v-3.4l.08-.02a1.7 1.7 0 0 0 1.2-1.2l.02-.08 2.94-1.7.06.06a1.7 1.7 0 0 0 1.88.34l.08-.02 2.94 1.7-.02.08a1.7 1.7 0 0 0 .48 1.75l.06.06v3.4z" transform="translate(-2 -2) scale(1.16)"></path>
     </svg>
-   </a>
+   </button>
   </div>
  </div>
 </header>
+
+<div class="admin-modal hidden" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+ <div class="admin-dialog">
+  <div class="admin-modal-head">
+   <span id="adminModalTitle">Admin Genius Kecil</span>
+   <button class="admin-close" id="closeAdmin" type="button" aria-label="Tutup">&times;</button>
+  </div>
+  <iframe class="admin-frame" id="adminFrame" title="Panel Admin Genius Kecil" loading="lazy" referrerpolicy="no-referrer"></iframe>
+ </div>
+</div>
 
 <main>
  <h1>Materi Pembelajaran</h1>
@@ -399,6 +416,22 @@ $("back").addEventListener("click",()=>{
  $("listing").classList.remove("hidden");
 });
 $("download").addEventListener("click",downloadContent);
+
+// Admin dibuka sebagai modal di halaman ini, bukan tab baru.
+const ADMIN_URL = "https://script.google.com/macros/s/AKfycbxB8_JF6PrDj0TLbOff1VYLtfvTQ7w6Pf_xDY8JszolRviRljgNJPcZ9AJPPGZDEQZBXg/exec?admin=1";
+function openAdminModal(){
+ $("adminModal").classList.remove("hidden");
+ document.body.classList.add("modal-open");
+ if(!$("adminFrame").getAttribute("src")) $("adminFrame").src=ADMIN_URL;
+}
+function closeAdminModal(){
+ $("adminModal").classList.add("hidden");
+ document.body.classList.remove("modal-open");
+}
+$("openAdmin").addEventListener("click",openAdminModal);
+$("closeAdmin").addEventListener("click",closeAdminModal);
+$("adminModal").addEventListener("click",event=>{if(event.target===$("adminModal"))closeAdminModal();});
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!$("adminModal").classList.contains("hidden"))closeAdminModal();});
 
 loadAPI();
 </script>
