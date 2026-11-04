@@ -2,1311 +2,845 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#174A83">
-<title>Materi Pelajaran | Genius Kecil</title>
-<meta name="description" content="Platform belajar ceria untuk PAUD, KB, TK, dan Sekolah Dasar.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>Materi Belajar | Genius Kecil</title>
+  <style>
+    :root {
+      --blue: #15549a;
+      --blue-dark: #103f76;
+      --blue-light: #e8f1ff;
+      --yellow: #ffd84d;
+      --orange: #f15a24;
+      --bg: #f4f8ff;
+      --white: #ffffff;
+      --text: #172b45;
+      --muted: #718096;
+      --border: #dce6f2;
+      --shadow: 0 5px 18px rgba(28, 66, 112, .06);
+    }
 
-<style>
-:root {
-  --blue:#174A83;
-  --blue2:#2878D0;
-  --yellow:#FFD84D;
-  --orange:#F49A38;
-  --bg:#F4F7FB;
-  --white:#fff;
-  --text:#253449;
-  --muted:#748297;
-  --border:#E2EAF3;
-  --shadow:0 5px 18px rgba(23,74,131,.06);
-}
+    * { box-sizing: border-box; }
 
-* {box-sizing:border-box}
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+    }
 
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-}
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-button,select {font:inherit}
-button {cursor:pointer}
+    .header-inner {
+      max-width: 1120px;
+      min-height: 76px;
+      margin: auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-header {
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:10;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
 
-.navbar {
-  max-width:1000px;
-  margin:auto;
-  min-height:68px;
-  padding:10px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
+    .brand img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
-.brand {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  cursor:pointer;
-}
+    .brand-name {
+      color: var(--blue);
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.4px;
+    }
 
-.brand img {
-  width:43px;
-  height:43px;
-  object-fit:contain;
-}
+    .brand-tagline {
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      margin-top: 3px;
+    }
 
-.brand-name {
-  color:var(--blue);
-  font-weight:900;
-  font-size:19px;
-  letter-spacing:.2px;
-}
+    .home-link {
+      text-decoration: none;
+      color: var(--blue);
+      background: var(--blue-light);
+      border-radius: 12px;
+      padding: 11px 17px;
+      font-weight: 700;
+    }
 
-.brand-sub {
-  color:var(--muted);
-  font-size:9px;
-  letter-spacing:1.4px;
-  margin-top:3px;
-}
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
 
-.home-button {
-  border:0;
-  border-radius:9px;
-  padding:10px 14px;
-  color:var(--blue);
-  background:#EDF4FC;
-  font-weight:700;
-}
+    .intro {
+      margin-bottom: 25px;
+    }
 
-.container {
-  max-width:900px;
-  margin:auto;
-  padding:24px 18px 50px;
-}
+    .intro h1 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 27px;
+    }
 
-.hero {
-  background:linear-gradient(115deg,#174A83,#2878D0);
-  color:#fff;
-  border-radius:18px;
-  padding:27px 25px;
-}
+    .intro p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
-.hero-label {
-  font-size:11px;
-  letter-spacing:1px;
-  opacity:.85;
-  font-weight:bold;
-}
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
 
-.hero h1 {
-  font-size:clamp(24px,4vw,34px);
-  line-height:1.2;
-  margin:11px 0 9px;
-}
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
 
-.hero p {
-  font-size:14px;
-  line-height:1.65;
-  color:#E5F0FF;
-  margin:0;
-  max-width:600px;
-}
+    .field {
+      min-width: 0;
+    }
 
-.panel {
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:21px;
-  margin-top:19px;
-  box-shadow:var(--shadow);
-}
+    .field label {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
 
-.panel-title {
-  color:var(--blue);
-  font-size:18px;
-  font-weight:800;
-  margin:0 0 5px;
-}
+    .select-wrap {
+      position: relative;
+    }
 
-.panel-desc {
-  color:var(--muted);
-  font-size:13px;
-  margin:0 0 19px;
-  line-height:1.5;
-}
+    .select-wrap::after {
+      content: "⌄";
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-55%);
+      color: var(--blue);
+      font-size: 21px;
+      pointer-events: none;
+    }
 
-.field {
-  margin-top:16px;
-}
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 42px 12px 15px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: #fbfdff;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+    }
 
-.field label {
-  display:block;
-  font-size:13px;
-  font-weight:700;
-  color:#42536A;
-  margin-bottom:8px;
-}
+    select:focus {
+      border-color: #4389dc;
+      box-shadow: 0 0 0 3px rgba(67, 137, 220, .12);
+    }
 
-select {
-  width:100%;
-  min-height:48px;
-  padding:0 13px;
-  border:1px solid #D6E1ED;
-  border-radius:10px;
-  background:#fff;
-  color:var(--text);
-  outline:none;
-}
+    select:disabled {
+      color: #9aa8b8;
+      background: #f2f5f9;
+      cursor: not-allowed;
+    }
 
-select:focus {
-  border-color:var(--blue2);
-  box-shadow:0 0 0 3px rgba(40,120,208,.10);
-}
+    .section-title {
+      color: var(--blue);
+      font-size: 20px;
+      margin: 28px 0 6px;
+    }
 
-select:disabled {
-  background:#F1F4F8;
-  color:#9AA5B3;
-}
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 17px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
 
-.primary-button {
-  width:100%;
-  min-height:47px;
-  background:var(--blue2);
-  color:#fff;
-  border:0;
-  border-radius:10px;
-  font-weight:800;
-  margin-top:20px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
 
-.primary-button:disabled {
-  opacity:.5;
-  cursor:not-allowed;
-}
+    .item-card {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 18px;
+      cursor: pointer;
+      color: var(--text);
+      box-shadow: var(--shadow);
+      transition: border-color .15s, transform .15s;
+    }
 
-.results {
-  margin-top:23px;
-}
+    .item-card:hover {
+      border-color: #7eafe7;
+      transform: translateY(-2px);
+    }
 
-.results-heading {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-bottom:12px;
-}
+    .item-card strong {
+      display: block;
+      color: var(--blue-dark);
+      font-size: 15px;
+      line-height: 1.45;
+      margin-bottom: 7px;
+    }
 
-.results-heading h2 {
-  font-size:18px;
-  color:var(--blue);
-  margin:0;
-}
+    .item-card small {
+      color: var(--muted);
+      line-height: 1.5;
+    }
 
-.results-heading span {
-  color:var(--muted);
-  font-size:12px;
-}
+    .reader {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 24px;
+      box-shadow: var(--shadow);
+    }
 
-.list {
-  display:grid;
-  gap:9px;
-}
+    .reader h2 {
+      color: var(--blue);
+      margin: 0 0 8px;
+      line-height: 1.35;
+    }
 
-.list-card {
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  text-align:left;
-  border:1px solid var(--border);
-  background:#fff;
-  border-radius:12px;
-  padding:15px;
-  transition:border-color .15s;
-}
+    .reader-content {
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+    }
 
-.list-card:hover {
-  border-color:var(--blue2);
-}
+    .reader-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
 
-.list-left {
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:0;
-}
+    .reader-content iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 10px;
+    }
 
-.list-icon {
-  width:39px;
-  height:39px;
-  flex-shrink:0;
-  border-radius:10px;
-  background:#EDF4FC;
-  display:grid;
-  place-items:center;
-  color:var(--blue);
-  font-size:19px;
-}
+    .content-block {
+      padding: 15px 0;
+      border-bottom: 1px solid #edf1f6;
+    }
 
-.list-info {
-  min-width:0;
-}
+    .content-block:last-child {
+      border-bottom: 0;
+    }
 
-.list-info strong {
-  display:block;
-  font-size:14px;
-  line-height:1.4;
-}
+    .content-block h3 {
+      color: var(--blue-dark);
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
 
-.list-info small {
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  margin-top:4px;
-  line-height:1.4;
-}
+    .content-block p {
+      margin: 0;
+      white-space: pre-wrap;
+    }
 
-.list-arrow {
-  color:var(--blue2);
-  font-size:22px;
-  flex-shrink:0;
-}
+    .back-button {
+      border: 0;
+      background: var(--blue-light);
+      color: var(--blue);
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 18px;
+    }
 
-.breadcrumb {
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  font-size:12px;
-  color:var(--muted);
-  margin:5px 0 16px;
-  line-height:1.6;
-}
+    .message {
+      background: var(--white);
+      border: 1px dashed #b9cce2;
+      border-radius: 14px;
+      padding: 22px;
+      color: var(--muted);
+      text-align: center;
+      line-height: 1.6;
+    }
 
-.breadcrumb span:not(:last-child)::after {
-  content:"/";
-  margin-left:7px;
-  color:#B5C0CC;
-}
+    .hidden { display: none !important; }
 
-.back-button {
-  background:#E9F1FA;
-  border:0;
-  color:var(--blue);
-  padding:10px 13px;
-  border-radius:9px;
-  font-weight:700;
-  margin-bottom:13px;
-}
+    .loading {
+      text-align: center;
+      padding: 25px;
+      color: var(--muted);
+    }
 
-.reader {
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:15px;
-  padding:22px;
-}
+    .error { color: #b42318; }
 
-.reader h1 {
-  color:var(--blue);
-  font-size:25px;
-  line-height:1.3;
-  margin:7px 0 10px;
-}
+    footer {
+      text-align: center;
+      padding: 22px;
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-.reader-summary {
-  color:var(--muted);
-  font-size:14px;
-  line-height:1.6;
-}
-
-.reader-content {
-  line-height:1.8;
-  font-size:15px;
-  overflow-wrap:anywhere;
-}
-
-.content-block {
-  margin:22px 0;
-}
-
-.content-block h3 {
-  color:var(--blue);
-  font-size:18px;
-}
-
-.content-block p {
-  white-space:pre-wrap;
-}
-
-.content-block img {
-  display:block;
-  max-width:100%;
-  height:auto;
-  border-radius:10px;
-  margin:12px 0;
-}
-
-.content-block iframe {
-  width:100%;
-  aspect-ratio:16/9;
-  border:0;
-  border-radius:10px;
-  margin:12px 0;
-}
-
-.content-block .pdf-frame {
-  aspect-ratio:4/5;
-  min-height:420px;
-}
-
-.content-note {
-  color:var(--muted);
-  font-size:12px;
-}
-
-.status {
-  background:#fff;
-  border:1px dashed #D2DEEA;
-  border-radius:12px;
-  padding:27px 18px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.6;
-}
-
-.status strong {
-  display:block;
-  color:var(--text);
-  font-size:15px;
-  margin-bottom:5px;
-}
-
-.spinner {
-  width:25px;
-  height:25px;
-  border:3px solid #DFEAF7;
-  border-top-color:var(--blue2);
-  border-radius:50%;
-  animation:spin .8s linear infinite;
-  margin:0 auto 12px;
-}
-
-@keyframes spin {to{transform:rotate(360deg)}}
-
-.hidden {display:none!important}
-
-footer {
-  text-align:center;
-  color:var(--muted);
-  font-size:12px;
-  padding:25px 15px;
-}
-
-footer strong {color:var(--blue)}
-
-@media(max-width:520px) {
-  .container {padding:17px 13px 38px}
-  .hero {padding:23px 19px}
-  .panel {padding:17px}
-  .reader {padding:17px}
-  .reader h1 {font-size:22px}
-  .brand-name {font-size:17px}
-}
-</style>
+    @media (max-width: 700px) {
+      .header-inner { min-height: 66px; padding: 9px 15px; }
+      .brand img { width: 42px; height: 42px; }
+      .brand-name { font-size: 18px; }
+      .home-link { padding: 9px 12px; font-size: 13px; }
+      main { padding: 22px 15px 45px; }
+      .intro h1 { font-size: 23px; }
+      .panel { padding: 17px; }
+      .field-grid { grid-template-columns: 1fr; gap: 15px; }
+      .grid { grid-template-columns: 1fr; gap: 10px; }
+      .item-card { padding: 16px; }
+      .reader { padding: 18px; }
+    }
+  </style>
 </head>
 
 <body>
-
 <header>
-  <div class="navbar">
-    <div class="brand" onclick="goHome()">
+  <div class="header-inner">
+    <a class="brand" href="./">
       <img
         src="https://raw.githubusercontent.com/genius-kecil/genius-kecil-portal/main/logo-genius-kecil.png"
         alt="Logo Genius Kecil"
-        onerror="this.style.display='none'"
+        width="48"
+        height="48"
       >
       <div>
         <div class="brand-name">GENIUS KECIL</div>
-        <div class="brand-sub">TEMAN BELAJAR KITA</div>
+        <div class="brand-tagline">TEMAN BELAJAR KITA</div>
       </div>
-    </div>
-    <button class="home-button" onclick="goHome()">Beranda</button>
+    </a>
+    <a class="home-link" href="https://genius-kecil-portal.rt2000-innovation.workers.dev/">
+      Beranda
+    </a>
   </div>
 </header>
 
-<main class="container">
+<main>
+  <section class="intro">
+    <h1>Materi Pembelajaran</h1>
+    <p>Yuk, pilih jenjang pendidikan dan mulai belajar bersama Genius Kecil!</p>
+  </section>
 
-  <section id="homePage">
-
-    <div class="hero">
-      <div class="hero-label">PLATFORM BELAJAR ANAK</div>
-      <h1>Belajar Ceria, Tumbuh Bersama!</h1>
-      <p>
-        Temukan materi dan aktivitas edukatif
-        untuk anak usia dini hingga sekolah dasar.
-      </p>
-    </div>
-
-    <section class="panel">
-      <h2 class="panel-title">Pilih Jenjang</h2>
-      <p class="panel-desc">
-        Tentukan jenjang pendidikan untuk melihat materi pembelajaran.
-      </p>
-
+  <section class="panel">
+    <div class="field-grid">
       <div class="field">
-        <label for="jenjangSelect">Jenjang Pendidikan</label>
-        <select id="jenjangSelect" onchange="selectJenjang()">
-          <option value="">Memuat pilihan jenjang...</option>
-        </select>
+        <label for="jenjang">Jenjang Pendidikan</label>
+        <div class="select-wrap">
+          <select id="jenjang">
+            <option value="">Memuat jenjang...</option>
+          </select>
+        </div>
       </div>
 
-      <div id="kelasField" class="field hidden">
-        <label for="kelasSelect">Kelas</label>
-        <select id="kelasSelect" onchange="selectKelas()">
-          <option value="">Pilih kelas</option>
-        </select>
+      <div class="field hidden" id="kelasField">
+        <label for="kelas">Pilih Kelas</label>
+        <div class="select-wrap">
+          <select id="kelas" disabled>
+            <option value="">Pilih kelas</option>
+          </select>
+        </div>
       </div>
 
-      <div id="mapelField" class="field hidden">
-        <label for="mapelSelect">Mata Pelajaran</label>
-        <select id="mapelSelect" onchange="selectMapel()">
-          <option value="">Pilih mata pelajaran</option>
-        </select>
+      <div class="field hidden" id="mapelField">
+        <label for="mapel">Mata Pelajaran</label>
+        <div class="select-wrap">
+          <select id="mapel" disabled>
+            <option value="">Pilih mata pelajaran</option>
+          </select>
+        </div>
       </div>
-
-      <div id="selectionStatus" class="content-note"></div>
-    </section>
-
-    <section id="resultsSection" class="results hidden">
-      <div class="results-heading">
-        <h2 id="resultsTitle">Daftar Bab</h2>
-        <span id="resultsCount"></span>
-      </div>
-      <div id="resultsList" class="list"></div>
-    </section>
-
-    <section id="materialsSection" class="results hidden">
-      <div class="results-heading">
-        <h2>Daftar Materi</h2>
-        <span id="materialsCount"></span>
-      </div>
-      <div id="materialsList" class="list"></div>
-    </section>
-
+    </div>
   </section>
 
-  <section id="readerPage" class="hidden">
-    <div id="breadcrumb" class="breadcrumb"></div>
-    <button class="back-button" onclick="backToMaterials()">
-      ← Kembali ke daftar materi
-    </button>
-    <article id="reader" class="reader"></article>
+  <section id="results" class="hidden">
+    <h2 class="section-title" id="resultTitle">Daftar Materi</h2>
+    <p class="section-desc" id="resultDesc"></p>
+    <div id="resultList" class="grid"></div>
   </section>
 
+  <section id="reader" class="reader hidden">
+    <button class="back-button" id="backButton">← Kembali ke daftar</button>
+    <div id="readerBody"></div>
+  </section>
+
+  <div id="status" class="message hidden"></div>
 </main>
 
 <footer>
-  <strong>GENIUS KECIL</strong><br>
-  Belajar Ceria, Tumbuh Bersama.
+  Genius Kecil · Teman Belajar Kita
 </footer>
 
-
 <script>
-/* =================================
-   CONFIGURATION
-================================= */
+  const API_URL = "https://script.google.com/macros/s/AKfycbzJMuCRyo2nCvXzdE76zxZ1wtnKRet9BTlYIjGIsCegrKpILCQL9JRjosDvXzlQVvKP/exec";
 
-const API_URL =
-'https://script.google.com/macros/s/AKfycbzJMuCRyo2nCvXzdE76zxZ1wtnKRet9BTlYIjGIsCegrKpILCQL9JRjosDvXzlQVvKP/exec';
+  const $ = id => document.getElementById(id);
 
-const CACHE_TIME = 5 * 60 * 1000;
+  let selectedJenjang = "";
+  let selectedKelas = "";
+  let selectedMapel = "";
+  let currentBabList = [];
+  let currentView = "bab";
 
-let initialData = {};
-let selectedJenjang = '';
-let selectedKelas = null;
-let selectedMapel = null;
-let selectedBab = null;
-let currentMaterials = [];
+  const cache = new Map();
 
-const subjectIcons = {
-  MTK:'🔢',
-  BI:'📖',
-  PP:'🇮🇩',
-  PAI:'🌙'
-};
+  function apiRequest(params) {
+    const query = new URLSearchParams(params).toString();
+    const cacheKey = query;
 
-
-/* =================================
-   ELEMENT HELPERS
-================================= */
-
-function el(id) {
-  return document.getElementById(id);
-}
-
-function escapeHTML(value) {
-  return String(value ?? '').replace(/[&<>"']/g, c => ({
-    '&':'&amp;',
-    '<':'&lt;',
-    '>':'&gt;',
-    '"':'&quot;',
-    "'":'&#39;'
-  })[c]);
-}
-
-function sortData(data) {
-  return [...data].sort((a,b) =>
-    Number(a.URUTAN || 0) - Number(b.URUTAN || 0)
-  );
-}
-
-function showLoading(target,message) {
-  el(target).innerHTML =
-    `<div class="status">
-      <div class="spinner"></div>
-      ${escapeHTML(message)}
-    </div>`;
-}
-
-function showEmpty(target,message) {
-  el(target).innerHTML =
-    `<div class="status">
-      <strong>Belum ada materi</strong>
-      ${escapeHTML(message)}
-    </div>`;
-}
-
-function showError(target,message) {
-  el(target).innerHTML =
-    `<div class="status">
-      <strong>Terjadi kendala</strong>
-      ${escapeHTML(message)}
-      <br><br>
-      Silakan coba kembali.
-    </div>`;
-}
-
-
-/* =================================
-   JSONP REQUEST + BROWSER CACHE
-================================= */
-
-function apiRequest(params) {
-
-  const cacheKey = 'GK_MATERI_' +
-    JSON.stringify(params);
-
-  try {
-    const cached = sessionStorage.getItem(cacheKey);
-
-    if (cached) {
-      const item = JSON.parse(cached);
-
-      if (Date.now() - item.time < CACHE_TIME) {
-        return Promise.resolve(item.data);
-      }
-    }
-  } catch(e) {}
-
-  return new Promise((resolve,reject) => {
-
-    const callbackName =
-      'gkCallback_' + Date.now() + '_' +
-      Math.floor(Math.random()*100000);
-
-    const script = document.createElement('script');
-
-    const query = new URLSearchParams({
-      ...params,
-      callback:callbackName
-    });
-
-    const timeout = setTimeout(() => {
-      cleanup();
-      reject(new Error('Koneksi terlalu lama. Coba lagi.'));
-    },20000);
-
-    function cleanup() {
-      clearTimeout(timeout);
-      delete window[callbackName];
-      script.remove();
+    if (cache.has(cacheKey)) {
+      return Promise.resolve(cache.get(cacheKey));
     }
 
-    window[callbackName] = result => {
-      cleanup();
+    return new Promise((resolve, reject) => {
+      const callbackName = "gkCallback_" + Date.now() + "_" +
+        Math.floor(Math.random() * 100000);
 
-      if (!result || result.status === 'error') {
-        reject(new Error(
-          result?.message || 'API tidak memberikan respons.'
-        ));
-        return;
+      const script = document.createElement("script");
+      const timeout = setTimeout(() => {
+        cleanup();
+        reject(new Error("Koneksi terlalu lama. Silakan coba kembali."));
+      }, 20000);
+
+      function cleanup() {
+        clearTimeout(timeout);
+        delete window[callbackName];
+        script.remove();
       }
 
-      try {
-        sessionStorage.setItem(cacheKey,JSON.stringify({
-          time:Date.now(),
-          data:result
-        }));
-      } catch(e) {}
+      window[callbackName] = result => {
+        cleanup();
 
-      resolve(result);
-    };
+        if (!result || result.status !== "success") {
+          reject(new Error(result?.message || "Data tidak berhasil dimuat."));
+          return;
+        }
 
-    script.onerror = () => {
-      cleanup();
-      reject(new Error('Tidak dapat menghubungi server.'));
-    };
+        cache.set(cacheKey, result);
+        resolve(result);
+      };
 
-    script.src = API_URL + '?' + query.toString();
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("Gagal menghubungi database. Periksa koneksi internet."));
+      };
 
-    document.body.appendChild(script);
-  });
-}
+      script.src = API_URL + "?" + query +
+        "&callback=" + callbackName;
 
-
-/* =================================
-   INITIALIZATION
-================================= */
-
-document.addEventListener('DOMContentLoaded',init);
-
-async function init() {
-
-  showLoading('selectionStatus','Menghubungkan ke database...');
-
-  try {
-    const result = await apiRequest({action:'init'});
-
-    initialData = result.data || {};
-
-    renderJenjang();
-
-    el('selectionStatus').textContent =
-      'Silakan pilih jenjang pendidikan.';
-
-  } catch(error) {
-    el('jenjangSelect').innerHTML =
-      '<option value="">Gagal memuat jenjang</option>';
-
-    el('selectionStatus').textContent = error.message;
-  }
-}
-
-
-/* =================================
-   JENJANG
-================================= */
-
-function renderJenjang() {
-
-  const data = initialData.jenjang || [];
-
-  el('jenjangSelect').innerHTML =
-    '<option value="">Pilih jenjang pendidikan</option>' +
-    data.map(item => `
-      <option value="${escapeHTML(item.ID_JENJANG)}">
-        ${escapeHTML(item.NAMA_JENJANG)}
-      </option>
-    `).join('');
-}
-
-
-function resetResults() {
-
-  el('resultsSection').classList.add('hidden');
-  el('materialsSection').classList.add('hidden');
-
-  selectedBab = null;
-  currentMaterials = [];
-}
-
-
-async function selectJenjang() {
-
-  selectedJenjang = el('jenjangSelect').value;
-
-  selectedKelas = null;
-  selectedMapel = null;
-
-  el('kelasField').classList.add('hidden');
-  el('mapelField').classList.add('hidden');
-
-  el('kelasSelect').value = '';
-  el('mapelSelect').value = '';
-
-  resetResults();
-
-  if (!selectedJenjang) {
-    el('selectionStatus').textContent =
-      'Silakan pilih jenjang pendidikan.';
-    return;
+      document.body.appendChild(script);
+    });
   }
 
-  if (selectedJenjang === 'PAUD-KB-TK') {
-
-    el('selectionStatus').textContent =
-      'Menampilkan katalog materi PAUD, KB, dan TK.';
-
-    await loadBab('PAUD-KB-TK','');
-
-    return;
+  function showStatus(message, isError = false) {
+    $("status").textContent = message;
+    $("status").classList.remove("hidden", "error");
+    if (isError) $("status").classList.add("error");
   }
 
-  if (selectedJenjang === 'SD') {
-
-    el('selectionStatus').textContent =
-      'Silakan pilih kelas 1 sampai 6.';
-
-    renderKelas();
-    el('kelasField').classList.remove('hidden');
-
-    return;
-  }
-}
-
-
-/* =================================
-   SD: KELAS
-================================= */
-
-function renderKelas() {
-
-  const kelas = sortData(initialData.kelas || [])
-    .filter(item =>
-      String(item.JENJANG || '').toUpperCase() === 'SD'
-    );
-
-  el('kelasSelect').innerHTML =
-    '<option value="">Pilih kelas</option>' +
-    kelas.map(item => `
-      <option value="${escapeHTML(item.ID_KELAS)}">
-        ${escapeHTML(item.NAMA_KELAS)}
-      </option>
-    `).join('');
-}
-
-
-function selectKelas() {
-
-  const id = el('kelasSelect').value;
-
-  selectedKelas = (initialData.kelas || [])
-    .find(item => item.ID_KELAS === id) || null;
-
-  selectedMapel = null;
-
-  el('mapelField').classList.add('hidden');
-  el('mapelSelect').value = '';
-
-  resetResults();
-
-  if (!selectedKelas) return;
-
-  renderMapel();
-
-  el('mapelField').classList.remove('hidden');
-
-  el('selectionStatus').textContent =
-    selectedKelas.NAMA_KELAS +
-    ' dipilih. Silakan pilih mata pelajaran.';
-}
-
-
-/* =================================
-   SD: MAPEL
-================================= */
-
-function renderMapel() {
-
-  const mapel = sortData(initialData.mapel || []);
-
-  el('mapelSelect').innerHTML =
-    '<option value="">Pilih mata pelajaran</option>' +
-    mapel.map(item => `
-      <option value="${escapeHTML(item.ID_MAPEL)}">
-        ${escapeHTML(item.NAMA_MAPEL)}
-      </option>
-    `).join('');
-}
-
-
-async function selectMapel() {
-
-  const id = el('mapelSelect').value;
-
-  selectedMapel = (initialData.mapel || [])
-    .find(item => item.ID_MAPEL === id) || null;
-
-  resetResults();
-
-  if (!selectedMapel || !selectedKelas) return;
-
-  el('selectionStatus').textContent =
-    'Memuat bab pembelajaran...';
-
-  await loadBab(
-    selectedKelas.ID_KELAS,
-    selectedMapel.ID_MAPEL
-  );
-}
-
-
-/* =================================
-   CHAPTER LIST
-================================= */
-
-async function loadBab(kelasId,mapelId) {
-
-  el('resultsSection').classList.remove('hidden');
-  el('materialsSection').classList.add('hidden');
-
-  el('resultsTitle').textContent = 'Daftar Bab';
-
-  showLoading('resultsList','Memuat daftar bab...');
-
-  try {
-
-    const params = {
-      action:'bab',
-      kelas:kelasId
-    };
-
-    if (mapelId) params.mapel = mapelId;
-
-    const result = await apiRequest(params);
-
-    const bab = sortData(result.data || []);
-
-    el('resultsCount').textContent =
-      bab.length + ' bab';
-
-    if (!bab.length) {
-      showEmpty(
-        'resultsList',
-        'Materi untuk pilihan ini belum tersedia. Silakan kembali lagi nanti.'
-      );
-
-      el('selectionStatus').textContent =
-        'Katalog belum memiliki materi aktif.';
-
-      return;
-    }
-
-    renderBab(bab);
-
-    el('selectionStatus').textContent =
-      'Silakan pilih bab untuk melihat materi.';
-
-  } catch(error) {
-    showError('resultsList',error.message);
-  }
-}
-
-
-function renderBab(data) {
-
-  el('resultsList').innerHTML = data.map((item,index) => `
-    <button class="list-card"
-      onclick="selectBab('${escapeHTML(item.ID_BAB)}')">
-
-      <div class="list-left">
-        <div class="list-icon">📚</div>
-        <div class="list-info">
-          <strong>${escapeHTML(item.NAMA_BAB)}</strong>
-          <small>Bab ${escapeHTML(item.URUTAN || index+1)}</small>
-        </div>
-      </div>
-
-      <span class="list-arrow">›</span>
-    </button>
-  `).join('');
-}
-
-
-/* =================================
-   MATERIAL LIST
-================================= */
-
-async function selectBab(id) {
-
-  const params = {
-    action:'bab',
-    kelas:selectedJenjang === 'SD'
-      ? selectedKelas.ID_KELAS
-      : 'PAUD-KB-TK'
-  };
-
-  if (selectedMapel) params.mapel = selectedMapel.ID_MAPEL;
-
-  try {
-    const result = await apiRequest(params);
-
-    selectedBab = (result.data || [])
-      .find(item => item.ID_BAB === id);
-
-  } catch(e) {
-    selectedBab = null;
+  function hideStatus() {
+    $("status").classList.add("hidden");
   }
 
-  if (!selectedBab) return;
+  function showLoading(message = "Sedang memuat data...") {
+    $("results").classList.remove("hidden");
+    $("resultList").innerHTML =
+      '<div class="loading">' + escapeHtml(message) + '</div>';
+    $("reader").classList.add("hidden");
+    hideStatus();
+  }
 
-  el('materialsSection').classList.remove('hidden');
+  function escapeHtml(value) {
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[char]);
+  }
 
-  showLoading('materialsList','Memuat materi...');
+  function getData(result) {
+    return Array.isArray(result?.data) ? result.data : [];
+  }
 
-  try {
+  function fillSelect(select, items, valueField, labelField, placeholder) {
+    select.innerHTML = "";
 
-    const result = await apiRequest({
-      action:'materi',
-      bab:id
+    const first = document.createElement("option");
+    first.value = "";
+    first.textContent = placeholder;
+    select.appendChild(first);
+
+    items.forEach(item => {
+      const option = document.createElement("option");
+      option.value = item[valueField];
+      option.textContent = item[labelField];
+      select.appendChild(option);
     });
 
-    currentMaterials = sortData(result.data || []);
-
-    el('materialsCount').textContent =
-      currentMaterials.length + ' materi';
-
-    if (!currentMaterials.length) {
-      showEmpty(
-        'materialsList',
-        'Materi pada bab ini belum ditambahkan.'
-      );
-      return;
-    }
-
-    renderMaterials();
-
-    el('materialsSection').scrollIntoView({
-      behavior:'smooth',
-      block:'start'
-    });
-
-  } catch(error) {
-    showError('materialsList',error.message);
-  }
-}
-
-
-function renderMaterials() {
-
-  el('materialsList').innerHTML =
-    currentMaterials.map(item => `
-      <button class="list-card"
-        onclick="openMaterial('${escapeHTML(item.ID_MATERI)}')">
-
-        <div class="list-left">
-          <div class="list-icon">📖</div>
-          <div class="list-info">
-            <strong>${escapeHTML(item.JUDUL_MATERI)}</strong>
-            <small>${escapeHTML(
-              item.RINGKASAN || 'Buka materi pembelajaran'
-            )}</small>
-          </div>
-        </div>
-
-        <span class="list-arrow">›</span>
-      </button>
-    `).join('');
-}
-
-
-/* =================================
-   MATERIAL READER
-================================= */
-
-async function openMaterial(id) {
-
-  const materi = currentMaterials.find(item =>
-    item.ID_MATERI === id
-  );
-
-  if (!materi) return;
-
-  el('homePage').classList.add('hidden');
-  el('readerPage').classList.remove('hidden');
-
-  const breadcrumbItems = [
-    selectedJenjang === 'SD'
-      ? 'Sekolah Dasar'
-      : 'PAUD - KB - TK'
-  ];
-
-  if (selectedKelas) breadcrumbItems.push(selectedKelas.NAMA_KELAS);
-  if (selectedMapel) breadcrumbItems.push(selectedMapel.NAMA_MAPEL);
-  if (selectedBab) breadcrumbItems.push(selectedBab.NAMA_BAB);
-
-  el('breadcrumb').innerHTML =
-    breadcrumbItems.map(item =>
-      '<span>' + escapeHTML(item) + '</span>'
-    ).join('');
-
-  el('reader').innerHTML =
-    '<div class="status"><div class="spinner"></div>Memuat materi...</div>';
-
-  window.scrollTo({top:0,behavior:'smooth'});
-
-  try {
-
-    const result = await apiRequest({
-      action:'detail',
-      id:id
-    });
-
-    renderReader(result.data);
-
-  } catch(error) {
-
-    el('reader').innerHTML =
-      '<div class="status"><strong>Gagal membuka materi</strong>' +
-      escapeHTML(error.message) + '</div>';
-  }
-}
-
-
-function renderReader(data) {
-
-  const materi = data.materi;
-  const konten = sortData(data.konten || []);
-
-  let html = `
-    <div class="content-note">
-      ${escapeHTML(materi.ID_MATERI)}
-    </div>
-
-    <h1>${escapeHTML(materi.JUDUL_MATERI)}</h1>
-
-    <div class="reader-summary">
-      ${escapeHTML(materi.RINGKASAN || '')}
-    </div>
-
-    <hr style="border:0;border-top:1px solid #E2EAF3;margin:20px 0">
-
-    <div class="reader-content">
-  `;
-
-  if (!konten.length) {
-    html += '<div class="status">Konten materi belum tersedia.</div>';
+    select.disabled = items.length === 0;
   }
 
-  konten.forEach(item => {
+  async function init() {
+    try {
+      const result = await apiRequest({ action: "init" });
+      const jenjang = result.data?.jenjang || [
+        { ID_JENJANG: "PAUD-KB-TK", NAMA_JENJANG: "PAUD - KB - TK" },
+        { ID_JENJANG: "SD", NAMA_JENJANG: "Sekolah Dasar" }
+      ];
 
-    const type = String(item.JENIS_KONTEN || '').toUpperCase();
-    const value = String(item.KONTEN || '').trim();
+      $("jenjang").innerHTML = '<option value="">Pilih jenjang pendidikan</option>';
 
-    html += '<section class="content-block">';
+      jenjang.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.ID_JENJANG;
+        option.textContent = item.NAMA_JENJANG;
+        $("jenjang").appendChild(option);
+      });
 
-    if (item.JUDUL_KONTEN) {
-      html += '<h3>' + escapeHTML(item.JUDUL_KONTEN) + '</h3>';
-    }
-
-    if (type === 'TEXT') {
-
-      html += '<p>' + escapeHTML(value) + '</p>';
-
-    } else if (type === 'IMAGE') {
-
-      const url = driveImageUrl(value);
-
-      html += `
-        <img
-          src="${escapeHTML(url)}"
-          alt="${escapeHTML(item.JUDUL_KONTEN || 'Gambar materi')}"
-          loading="lazy"
-          onerror="this.outerHTML='<p>Gambar tidak dapat ditampilkan. Periksa izin Drive.</p>'">
+      hideStatus();
+    } catch (error) {
+      // Fallback pilihan jenjang jika endpoint init belum menyediakan data jenjang.
+      $("jenjang").innerHTML = `
+        <option value="">Pilih jenjang pendidikan</option>
+        <option value="PAUD-KB-TK">PAUD - KB - TK</option>
+        <option value="SD">Sekolah Dasar</option>
       `;
-
-    } else if (type === 'PDF') {
-
-      const url = drivePreviewUrl(value);
-
-      html += `
-        <iframe
-          class="pdf-frame"
-          src="${escapeHTML(url)}"
-          loading="lazy"
-          allow="autoplay">
-        </iframe>
-        <p>
-          <a href="${escapeHTML(value)}"
-             target="_blank"
-             rel="noopener">
-             Buka PDF di tab baru
-          </a>
-        </p>
-      `;
-
-    } else if (type === 'VIDEO') {
-
-      const url = youtubeEmbedUrl(value) || drivePreviewUrl(value);
-
-      html += `
-        <iframe
-          src="${escapeHTML(url)}"
-          loading="lazy"
-          allowfullscreen>
-        </iframe>
-      `;
-
-    } else {
-
-      html += '<p>' + escapeHTML(value) + '</p>';
-
+      showStatus(error.message, true);
     }
+  }
 
-    if (item.KETERANGAN) {
-      html += '<div class="content-note">' +
-        escapeHTML(item.KETERANGAN) +
-        '</div>';
-    }
+  function resetResults() {
+    $("results").classList.add("hidden");
+    $("reader").classList.add("hidden");
+    $("resultList").innerHTML = "";
+    $("readerBody").innerHTML = "";
+    hideStatus();
+  }
 
-    html += '</section>';
-  });
-
-  html += '</div>';
-
-  html += `
-    <hr style="border:0;border-top:1px solid #E2EAF3;margin:22px 0">
-    <button class="back-button" onclick="backToMaterials()">
-      ← Kembali ke daftar materi
-    </button>
-  `;
-
-  el('reader').innerHTML = html;
-}
-
-
-/* =================================
-   FILE URL HELPERS
-================================= */
-
-function getDriveId(url) {
-
-  const match = String(url).match(
-    /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
-  );
-
-  return match ? (match[1] || match[2]) : null;
-}
-
-
-function driveImageUrl(url) {
-
-  const id = getDriveId(url);
-
-  return id
-    ? 'https://drive.google.com/uc?export=view&id=' + id
-    : url;
-}
-
-
-function drivePreviewUrl(url) {
-
-  const id = getDriveId(url);
-
-  return id
-    ? 'https://drive.google.com/file/d/' + id + '/preview'
-    : url;
-}
-
-
-function youtubeEmbedUrl(url) {
-
-  const text = String(url);
-
-  let id = null;
-
-  if (text.includes('youtu.be/')) {
-
-    id = text.split('youtu.be/')[1].split(/[?&]/)[0];
-
-  } else if (text.includes('youtube.com')) {
+  async function loadKelas() {
+    showLoading("Memuat daftar kelas...");
 
     try {
+      const result = await apiRequest({ action: "kelas" });
+      const kelas = getData(result).filter(item =>
+        String(item.JENJANG || "").toUpperCase() === "SD"
+      );
 
-      const parsed = new URL(text);
+      fillSelect($("kelas"), kelas, "ID_KELAS", "NAMA_KELAS", "Pilih kelas");
+      $("kelas").disabled = false;
+      $("kelasField").classList.remove("hidden");
+      $("mapelField").classList.remove("hidden");
 
-      id = parsed.searchParams.get('v');
-
-      if (!id && parsed.pathname.includes('/embed/')) {
-        id = parsed.pathname.split('/embed/')[1];
-      }
-
-      if (!id && parsed.pathname.includes('/shorts/')) {
-        id = parsed.pathname.split('/shorts/')[1];
-      }
-
-    } catch(e) {}
+      $("resultTitle").textContent = "Materi Sekolah Dasar";
+      $("resultDesc").textContent = "Pilih kelas dan mata pelajaran untuk melihat materi.";
+      $("resultList").innerHTML = "";
+      $("results").classList.add("hidden");
+      hideStatus();
+    } catch (error) {
+      showStatus(error.message, true);
+    }
   }
 
-  return id
-    ? 'https://www.youtube.com/embed/' + id
-    : null;
-}
+  async function loadMapel() {
+    selectedKelas = $("kelas").value;
+    selectedMapel = "";
 
+    fillSelect($("mapel"), [], "ID_MAPEL", "NAMA_MAPEL", "Memuat mata pelajaran...");
+    $("mapel").disabled = true;
+    resetResults();
 
-/* =================================
-   NAVIGATION
-================================= */
+    if (!selectedKelas) return;
 
-function backToMaterials() {
+    try {
+      const result = await apiRequest({
+        action: "mapel",
+        kelas: selectedKelas
+      });
 
-  el('readerPage').classList.add('hidden');
-  el('homePage').classList.remove('hidden');
+      const mapel = getData(result);
+      fillSelect($("mapel"), mapel, "ID_MAPEL", "NAMA_MAPEL", "Pilih mata pelajaran");
+      $("mapel").disabled = false;
+    } catch (error) {
+      showStatus(error.message, true);
+    }
+  }
 
-  el('materialsSection').scrollIntoView({
-    behavior:'smooth',
-    block:'start'
+  async function loadBab(kelasId, mapelId, title) {
+    showLoading("Memuat daftar materi...");
+
+    try {
+      const params = {
+        action: "bab",
+        kelas: kelasId
+      };
+
+      if (mapelId) params.mapel = mapelId;
+
+      const result = await apiRequest(params);
+      currentBabList = getData(result);
+      currentView = "bab";
+
+      $("resultTitle").textContent = title;
+      $("resultDesc").textContent = "Pilih topik untuk melihat materi pembelajaran.";
+      renderBab(currentBabList);
+      hideStatus();
+    } catch (error) {
+      showStatus(error.message, true);
+    }
+  }
+
+  function renderBab(items) {
+    $("results").classList.remove("hidden");
+    $("reader").classList.add("hidden");
+
+    if (!items.length) {
+      $("resultList").innerHTML =
+        '<div class="message">Belum ada materi yang tersedia. Materi akan segera ditambahkan.</div>';
+      return;
+    }
+
+    $("resultList").innerHTML = items.map(item => `
+      <button class="item-card" data-id="${escapeHtml(item.ID_BAB)}">
+        <strong>${escapeHtml(item.NAMA_BAB)}</strong>
+        <small>${escapeHtml(item.DESKRIPSI || "Lihat materi pembelajaran")}</small>
+      </button>
+    `).join("");
+
+    $("resultList").querySelectorAll(".item-card").forEach(button => {
+      button.addEventListener("click", () => {
+        loadMateri(button.dataset.id, button.querySelector("strong").textContent);
+      });
+    });
+  }
+
+  async function loadMateri(babId, babTitle) {
+    showLoading("Memuat materi pembelajaran...");
+
+    try {
+      const result = await apiRequest({
+        action: "materi",
+        bab: babId
+      });
+
+      const materi = getData(result);
+      currentView = "materi";
+
+      $("resultTitle").textContent = babTitle;
+      $("resultDesc").textContent = "Pilih materi yang ingin dipelajari.";
+      renderMateri(materi);
+      hideStatus();
+    } catch (error) {
+      showStatus(error.message, true);
+    }
+  }
+
+  function renderMateri(items) {
+    $("results").classList.remove("hidden");
+    $("reader").classList.add("hidden");
+
+    if (!items.length) {
+      $("resultList").innerHTML =
+        '<div class="message">Belum ada materi pada bab ini.</div>';
+      return;
+    }
+
+    $("resultList").innerHTML = items.map(item => `
+      <button class="item-card" data-id="${escapeHtml(item.ID_MATERI)}">
+        <strong>${escapeHtml(item.JUDUL_MATERI)}</strong>
+        <small>${escapeHtml(item.RINGKASAN || "Buka materi pembelajaran")}</small>
+      </button>
+    `).join("");
+
+    $("resultList").querySelectorAll(".item-card").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = items.find(x => String(x.ID_MATERI) === button.dataset.id);
+        loadDetail(button.dataset.id, item?.JUDUL_MATERI || "Materi");
+      });
+    });
+  }
+
+  async function loadDetail(id, title) {
+    showLoading("Membuka materi...");
+
+    try {
+      const result = await apiRequest({
+        action: "detail",
+        id: id
+      });
+
+      const detail = result.data || {};
+      const materi = detail.materi || {};
+      const konten = Array.isArray(detail.konten) ? detail.konten : [];
+
+      $("results").classList.add("hidden");
+      $("reader").classList.remove("hidden");
+
+      let html = `
+        <h2>${escapeHtml(materi.JUDUL_MATERI || title)}</h2>
+        <p class="section-desc">${escapeHtml(materi.RINGKASAN || "")}</p>
+      `;
+
+      if (!konten.length) {
+        html += '<div class="message">Konten materi belum tersedia.</div>';
+      }
+
+      konten.forEach(item => {
+        html += renderContent(item);
+      });
+
+      $("readerBody").innerHTML = html;
+      hideStatus();
+      $("reader").scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      showStatus(error.message, true);
+    }
+  }
+
+  function renderContent(item) {
+    const type = String(item.JENIS_KONTEN || "TEXT").toUpperCase();
+    const title = item.JUDUL_KONTEN
+      ? `<h3>${escapeHtml(item.JUDUL_KONTEN)}</h3>`
+      : "";
+    const value = String(item.KONTEN || "").trim();
+
+    let body = "";
+
+    if (type === "IMAGE") {
+      body = `<img src="${escapeHtml(value)}" alt="${escapeHtml(item.JUDUL_KONTEN || "Gambar materi")}" loading="lazy">`;
+    } else if (type === "PDF") {
+      const url = drivePreviewUrl(value);
+      body = `<iframe src="${escapeHtml(url)}" loading="lazy" title="Materi PDF"></iframe>
+        <p><a href="${escapeHtml(value)}" target="_blank" rel="noopener">Buka PDF di tab baru</a></p>`;
+    } else if (type === "VIDEO") {
+      const url = youtubeEmbedUrl(value);
+      body = url
+        ? `<iframe src="${escapeHtml(url)}" loading="lazy" allowfullscreen title="Video pembelajaran"></iframe>`
+        : `<p><a href="${escapeHtml(value)}" target="_blank" rel="noopener">Tonton video pembelajaran</a></p>`;
+    } else {
+      body = `<p>${escapeHtml(value)}</p>`;
+    }
+
+    return `<div class="content-block">${title}${body}</div>`;
+  }
+
+  function drivePreviewUrl(url) {
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
+      url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+
+    return match
+      ? "https://drive.google.com/file/d/" + match[1] + "/preview"
+      : url;
+  }
+
+  function youtubeEmbedUrl(url) {
+    let match = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
+    if (!match) match = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
+    if (!match) match = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
+
+    return match
+      ? "https://www.youtube.com/embed/" + match[1]
+      : "";
+  }
+
+  $("jenjang").addEventListener("change", async () => {
+    selectedJenjang = $("jenjang").value;
+    selectedKelas = "";
+    selectedMapel = "";
+
+    resetResults();
+
+    $("kelasField").classList.add("hidden");
+    $("mapelField").classList.add("hidden");
+
+    fillSelect($("kelas"), [], "ID_KELAS", "NAMA_KELAS", "Pilih kelas");
+    fillSelect($("mapel"), [], "ID_MAPEL", "NAMA_MAPEL", "Pilih mata pelajaran");
+
+    if (selectedJenjang === "PAUD-KB-TK") {
+      // PAUD langsung ke katalog: tanpa kelas dan tanpa mata pelajaran.
+      await loadBab(
+        "PAUD-KB-TK",
+        "",
+        "Materi PAUD - KB - TK"
+      );
+    } else if (selectedJenjang === "SD") {
+      await loadKelas();
+    }
   });
-}
 
+  $("kelas").addEventListener("change", loadMapel);
 
-function goHome() {
+  $("mapel").addEventListener("change", async () => {
+    selectedMapel = $("mapel").value;
 
-  selectedJenjang = '';
-  selectedKelas = null;
-  selectedMapel = null;
-  selectedBab = null;
-  currentMaterials = [];
+    if (!selectedKelas || !selectedMapel) {
+      resetResults();
+      return;
+    }
 
-  el('readerPage').classList.add('hidden');
-  el('homePage').classList.remove('hidden');
+    const kelasName = $("kelas").selectedOptions[0]?.textContent || "";
+    const mapelName = $("mapel").selectedOptions[0]?.textContent || "";
 
-  el('jenjangSelect').value = '';
-  el('kelasSelect').value = '';
-  el('mapelSelect').value = '';
+    await loadBab(
+      selectedKelas,
+      selectedMapel,
+      kelasName + " · " + mapelName
+    );
+  });
 
-  el('kelasField').classList.add('hidden');
-  el('mapelField').classList.add('hidden');
+  $("backButton").addEventListener("click", () => {
+    $("reader").classList.add("hidden");
 
-  resetResults();
+    if (currentView === "materi") {
+      // Kembali dari detail ke daftar materi.
+      $("results").classList.remove("hidden");
+    } else {
+      $("results").classList.remove("hidden");
+    }
+  });
 
-  el('selectionStatus').textContent =
-    'Silakan pilih jenjang pendidikan.';
-
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
-
-function resetResults() {
-  el('resultsSection').classList.add('hidden');
-  el('materialsSection').classList.add('hidden');
-  selectedBab = null;
-  currentMaterials = [];
-}
-
+  init();
 </script>
-
 </body>
 </html>
