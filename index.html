@@ -1,0 +1,1049 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#174A83">
+<title>Materi Pelajaran - Genius Kecil</title>
+<meta name="description" content="Belajar lebih mudah bersama Genius Kecil. Materi pembelajaran SD kelas 1 sampai 6.">
+
+<style>
+:root {
+  --blue: #174A83;
+  --blue2: #2878D0;
+  --yellow: #FFD84D;
+  --orange: #F49A38;
+  --bg: #F4F8FD;
+  --white: #FFFFFF;
+  --text: #243449;
+  --muted: #718096;
+  --border: #E5ECF4;
+  --green: #159B69;
+  --shadow: 0 8px 25px rgba(28,65,110,.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.navbar {
+  max-width: 1150px;
+  margin: auto;
+  padding: 13px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: var(--yellow);
+  display: grid;
+  place-items: center;
+  font-size: 25px;
+}
+
+.brand-name {
+  font-weight: 900;
+  color: var(--blue);
+  font-size: 19px;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1.3px;
+}
+
+.nav-button {
+  background: #EDF4FC;
+  border: none;
+  color: var(--blue);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 22px 20px 60px;
+}
+
+.hero {
+  background: linear-gradient(120deg, #174A83, #2878D0);
+  border-radius: 23px;
+  padding: 35px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(25px, 4vw, 38px);
+  line-height: 1.2;
+  margin: 8px 0 12px;
+}
+
+.hero p {
+  color: #E2EDFC;
+  line-height: 1.6;
+  max-width: 510px;
+  margin: 0;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(255,255,255,.15);
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.hero-art {
+  font-size: 100px;
+  min-width: 130px;
+  text-align: center;
+  transform: rotate(-8deg);
+}
+
+.section {
+  margin-top: 32px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 5px 0 0;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 13px;
+}
+
+.class-card {
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 17px;
+  padding: 20px 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+
+.class-card:hover,
+.class-card.active {
+  border-color: var(--blue2);
+  transform: translateY(-3px);
+}
+
+.class-number {
+  width: 48px;
+  height: 48px;
+  margin: auto auto 10px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: #E7F1FF;
+  color: var(--blue);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.class-card.active .class-number {
+  background: var(--yellow);
+}
+
+.class-card strong {
+  font-size: 13px;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 13px;
+}
+
+.subject-card {
+  background: white;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: .2s;
+}
+
+.subject-card:hover,
+.subject-card.active {
+  border-color: var(--blue2);
+  transform: translateY(-2px);
+}
+
+.subject-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+
+.subject-card strong {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.subject-card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.chapter-list, .material-list {
+  display: grid;
+  gap: 10px;
+}
+
+.chapter-card, .material-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.chapter-card:hover, .material-card:hover {
+  border-color: var(--blue2);
+}
+
+.card-left {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.card-icon {
+  width: 42px;
+  height: 42px;
+  background: #EDF4FC;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.card-text strong {
+  display: block;
+  font-size: 14px;
+}
+
+.card-text small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+}
+
+.arrow {
+  color: var(--blue2);
+  font-size: 22px;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 24px 0 18px;
+}
+
+.breadcrumb button {
+  background: none;
+  border: none;
+  color: var(--blue2);
+  padding: 0;
+}
+
+.reader {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.reader h1 {
+  color: var(--blue);
+  margin-top: 5px;
+}
+
+.reader-content {
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.reader-content p {
+  white-space: pre-wrap;
+}
+
+.reader-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+.reader-content iframe {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  margin: 12px 0;
+}
+
+.reader-content .pdf-frame {
+  aspect-ratio: 4/5;
+  min-height: 500px;
+}
+
+.content-block {
+  margin: 24px 0;
+}
+
+.content-block h3 {
+  color: var(--blue);
+}
+
+.content-note {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.back-button {
+  background: #EDF4FC;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.notice {
+  background: white;
+  padding: 35px 20px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px dashed #C7D5E5;
+  color: var(--muted);
+}
+
+.notice-icon {
+  font-size: 35px;
+  margin-bottom: 10px;
+}
+
+.loader {
+  text-align: center;
+  padding: 30px;
+  color: var(--muted);
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #DCE9F8;
+  border-top-color: var(--blue2);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.hidden { display: none !important; }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+footer strong { color: var(--blue); }
+
+@media(max-width:750px) {
+  .class-grid { grid-template-columns: repeat(3, 1fr); }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 25px 20px; }
+  .hero-art { font-size: 65px; min-width: 75px; }
+}
+
+@media(max-width:430px) {
+  .container { padding: 17px 14px 45px; }
+  .navbar { padding: 11px 14px; }
+  .brand-name { font-size: 17px; }
+  .hero { border-radius: 18px; }
+  .hero-art { font-size: 52px; min-width: 55px; }
+  .reader { padding: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand" onclick="goHome()">
+      <div class="brand-icon">📚</div>
+      <div>
+        <div class="brand-name">GENIUS KECIL</div>
+        <div class="brand-sub">TEMAN BELAJAR KITA</div>
+      </div>
+    </div>
+    <button class="nav-button" onclick="goHome()">Beranda</button>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="homePage">
+
+    <div class="hero">
+      <div>
+        <span class="hero-tag">📖 BELAJAR JADI MENYENANGKAN</span>
+        <h1>Yuk, Belajar<br>bersama Genius Kecil!</h1>
+        <p>
+          Temukan materi pelajaran sekolah dasar.
+          Belajar lebih mudah, kapan saja dan di mana saja.
+        </p>
+      </div>
+      <div class="hero-art">🎒</div>
+    </div>
+
+    <section class="section">
+      <div class="section-title">
+        <div>
+          <h2>Pilih Kelas</h2>
+          <p>Mulai belajar dari kelasmu</p>
+        </div>
+      </div>
+      <div id="classGrid" class="class-grid">
+        <div class="loader">Memuat kelas...</div>
+      </div>
+    </section>
+
+    <section id="subjectSection" class="section hidden">
+      <div class="section-title">
+        <div>
+          <h2 id="subjectTitle">Mata Pelajaran</h2>
+          <p>Pilih mata pelajaran yang ingin dipelajari</p>
+        </div>
+      </div>
+      <div id="subjectGrid" class="subject-grid"></div>
+    </section>
+
+    <section id="chapterSection" class="section hidden">
+      <div class="section-title">
+        <div>
+          <h2>Daftar Bab</h2>
+          <p id="chapterSubtitle">Pilih bab pembelajaran</p>
+        </div>
+      </div>
+      <div id="chapterList" class="chapter-list"></div>
+    </section>
+
+    <section id="materialSection" class="section hidden">
+      <div class="section-title">
+        <div>
+          <h2>Daftar Materi</h2>
+          <p id="materialSubtitle">Pilih materi untuk dibaca</p>
+        </div>
+      </div>
+      <div id="materialList" class="material-list"></div>
+    </section>
+
+  </section>
+
+  <section id="readerPage" class="hidden">
+    <div id="breadcrumb" class="breadcrumb"></div>
+    <button class="back-button" onclick="backToMaterials()">
+      ← Kembali ke daftar materi
+    </button>
+    <article id="reader" class="reader"></article>
+  </section>
+
+</main>
+
+<footer>
+  <strong>GENIUS KECIL</strong><br>
+  Belajar Ceria, Tumbuh Bersama.
+</footer>
+
+<script>
+const API_URL =
+'https://script.google.com/macros/s/AKfycbzJMuCRyo2nCvXzdE76zxZ1wtnKRet9BTlYIjGIsCegrKpILCQL9JRjosDvXzlQVvKP/exec';
+
+let selectedClass = null;
+let selectedSubject = null;
+let selectedChapter = null;
+let selectedMaterial = null;
+
+let classes = [];
+let subjects = [];
+let chapters = [];
+let materials = [];
+
+const icons = {
+  'MTK': '🔢',
+  'BI': '📖',
+  'PP': '🇮🇩',
+  'PAI': '🌙'
+};
+
+const colors = {
+  'MTK': '#E7F1FF',
+  'BI': '#FFF1E4',
+  'PP': '#FFE9E9',
+  'PAI': '#E7F7EE'
+};
+
+
+/* JSONP API REQUEST */
+
+function apiRequest(params) {
+  return new Promise((resolve, reject) => {
+    const callbackName =
+      'geniusCallback_' + Date.now() + '_' +
+      Math.floor(Math.random() * 100000);
+
+    const script = document.createElement('script');
+
+    const query = new URLSearchParams({
+      ...params,
+      callback: callbackName
+    });
+
+    const timeout = setTimeout(() => {
+      cleanup();
+      reject(new Error('Waktu koneksi habis. Periksa API.'));
+    }, 20000);
+
+    function cleanup() {
+      clearTimeout(timeout);
+      delete window[callbackName];
+      script.remove();
+    }
+
+    window[callbackName] = function(result) {
+      cleanup();
+
+      if (result.status === 'error') {
+        reject(new Error(result.message || 'API error'));
+      } else {
+        resolve(result);
+      }
+    };
+
+    script.onerror = function() {
+      cleanup();
+      reject(new Error('Tidak dapat menghubungi API.'));
+    };
+
+    script.src = API_URL + '?' + query.toString();
+
+    document.body.appendChild(script);
+  });
+}
+
+
+/* UTILITIES */
+
+function el(id) {
+  return document.getElementById(id);
+}
+
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[char]);
+}
+
+function sortData(data) {
+  return [...data].sort((a,b) =>
+    Number(a.URUTAN || 0) - Number(b.URUTAN || 0)
+  );
+}
+
+function showLoading(target, message) {
+  el(target).innerHTML =
+    '<div class="loader"><div class="spinner"></div>' +
+    escapeHTML(message) + '</div>';
+}
+
+function showEmpty(target, message) {
+  el(target).innerHTML =
+    '<div class="notice"><div class="notice-icon">📚</div>' +
+    '<strong>Belum ada materi</strong><p>' +
+    escapeHTML(message) + '</p></div>';
+}
+
+function showError(target, message) {
+  el(target).innerHTML =
+    '<div class="notice"><div class="notice-icon">⚠️</div>' +
+    '<strong>Terjadi kendala</strong><p>' +
+    escapeHTML(message) + '</p>' +
+    '<button class="back-button" onclick="loadClasses()">Coba lagi</button></div>';
+}
+
+
+/* INITIALIZATION */
+
+document.addEventListener('DOMContentLoaded', loadClasses);
+
+async function loadClasses() {
+  showLoading('classGrid', 'Menghubungkan ke Genius Kecil...');
+
+  try {
+    const result = await apiRequest({action:'kelas'});
+    classes = sortData(result.data || []);
+    renderClasses();
+  } catch(error) {
+    showError('classGrid', error.message);
+  }
+}
+
+
+/* CLASS */
+
+function renderClasses() {
+  if (!classes.length) {
+    showEmpty('classGrid', 'Data kelas belum tersedia.');
+    return;
+  }
+
+  el('classGrid').innerHTML = classes.map(item => `
+    <button class="class-card ${
+      selectedClass?.ID_KELAS === item.ID_KELAS ? 'active' : ''
+    }" onclick="selectClass('${escapeHTML(item.ID_KELAS)}')">
+      <div class="class-number">${escapeHTML(
+        item.NAMA_KELAS.replace(/\D/g,'') || item.URUTAN
+      )}</div>
+      <strong>${escapeHTML(item.NAMA_KELAS)}</strong>
+    </button>
+  `).join('');
+}
+
+async function selectClass(id) {
+  selectedClass = classes.find(x => x.ID_KELAS === id);
+  selectedSubject = null;
+  selectedChapter = null;
+  selectedMaterial = null;
+
+  el('subjectSection').classList.remove('hidden');
+  el('chapterSection').classList.add('hidden');
+  el('materialSection').classList.add('hidden');
+
+  el('subjectTitle').textContent =
+    'Mata Pelajaran - ' + selectedClass.NAMA_KELAS;
+
+  renderClasses();
+  showLoading('subjectGrid', 'Memuat mata pelajaran...');
+
+  try {
+    // Ambil semua mapel. Filter berdasarkan bab hanya
+    // jika bab sudah tersedia di database.
+    const result = await apiRequest({action:'mapel'});
+    subjects = sortData(result.data || []);
+    renderSubjects();
+  } catch(error) {
+    showError('subjectGrid', error.message);
+  }
+
+  el('subjectSection').scrollIntoView({behavior:'smooth'});
+}
+
+
+/* SUBJECT */
+
+function renderSubjects() {
+  if (!subjects.length) {
+    showEmpty('subjectGrid', 'Mata pelajaran belum tersedia.');
+    return;
+  }
+
+  el('subjectGrid').innerHTML = subjects.map(item => {
+    const code = item.KODE_MAPEL || '';
+    return `
+      <button class="subject-card ${
+        selectedSubject?.ID_MAPEL === item.ID_MAPEL ? 'active' : ''
+      }" onclick="selectSubject('${escapeHTML(item.ID_MAPEL)}')">
+        <div class="subject-icon"
+          style="background:${colors[code] || '#EDF4FC'}">
+          ${icons[code] || '📘'}
+        </div>
+        <strong>${escapeHTML(item.NAMA_MAPEL)}</strong>
+        <small>Lihat materi →</small>
+      </button>
+    `;
+  }).join('');
+}
+
+async function selectSubject(id) {
+  selectedSubject = subjects.find(x => x.ID_MAPEL === id);
+  selectedChapter = null;
+
+  el('chapterSection').classList.remove('hidden');
+  el('materialSection').classList.add('hidden');
+
+  el('chapterSubtitle').textContent =
+    selectedClass.NAMA_KELAS + ' • ' + selectedSubject.NAMA_MAPEL;
+
+  renderSubjects();
+  showLoading('chapterList', 'Memuat daftar bab...');
+
+  try {
+    const result = await apiRequest({
+      action:'bab',
+      kelas:selectedClass.ID_KELAS,
+      mapel:selectedSubject.ID_MAPEL
+    });
+
+    chapters = sortData(result.data || []);
+    renderChapters();
+  } catch(error) {
+    showError('chapterList', error.message);
+  }
+
+  el('chapterSection').scrollIntoView({behavior:'smooth'});
+}
+
+
+/* CHAPTER */
+
+function renderChapters() {
+  if (!chapters.length) {
+    showEmpty('chapterList',
+      'Bab untuk mata pelajaran ini belum ditambahkan oleh admin.');
+    return;
+  }
+
+  el('chapterList').innerHTML = chapters.map((item,index) => `
+    <button class="chapter-card"
+      onclick="selectChapter('${escapeHTML(item.ID_BAB)}')">
+      <div class="card-left">
+        <div class="card-icon">📚</div>
+        <div class="card-text">
+          <strong>${escapeHTML(item.NAMA_BAB)}</strong>
+          <small>Bab ${escapeHTML(item.URUTAN || index+1)}</small>
+        </div>
+      </div>
+      <span class="arrow">›</span>
+    </button>
+  `).join('');
+}
+
+async function selectChapter(id) {
+  selectedChapter = chapters.find(x => x.ID_BAB === id);
+
+  el('materialSection').classList.remove('hidden');
+  el('materialSubtitle').textContent = selectedChapter.NAMA_BAB;
+
+  showLoading('materialList', 'Memuat materi...');
+
+  try {
+    const result = await apiRequest({
+      action:'materi',
+      bab:selectedChapter.ID_BAB
+    });
+
+    materials = sortData(result.data || []);
+    renderMaterials();
+  } catch(error) {
+    showError('materialList', error.message);
+  }
+
+  el('materialSection').scrollIntoView({behavior:'smooth'});
+}
+
+
+/* MATERIAL */
+
+function renderMaterials() {
+  if (!materials.length) {
+    showEmpty('materialList',
+      'Materi pada bab ini belum tersedia.');
+    return;
+  }
+
+  el('materialList').innerHTML = materials.map((item,index) => `
+    <button class="material-card"
+      onclick="openMaterial('${escapeHTML(item.ID_MATERI)}')">
+      <div class="card-left">
+        <div class="card-icon">📖</div>
+        <div class="card-text">
+          <strong>${escapeHTML(item.JUDUL_MATERI)}</strong>
+          <small>${escapeHTML(item.RINGKASAN || 'Buka materi pembelajaran')}</small>
+        </div>
+      </div>
+      <span class="arrow">›</span>
+    </button>
+  `).join('');
+}
+
+
+/* READER */
+
+async function openMaterial(id) {
+  selectedMaterial = materials.find(x => x.ID_MATERI === id);
+
+  el('homePage').classList.add('hidden');
+  el('readerPage').classList.remove('hidden');
+
+  el('breadcrumb').textContent =
+    selectedClass.NAMA_KELAS + ' / ' +
+    selectedSubject.NAMA_MAPEL + ' / ' +
+    selectedChapter.NAMA_BAB;
+
+  el('reader').innerHTML =
+    '<div class="loader"><div class="spinner"></div>Memuat materi...</div>';
+
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  try {
+    const result = await apiRequest({
+      action:'detail',
+      id:id
+    });
+
+    renderReader(result.data);
+  } catch(error) {
+    el('reader').innerHTML =
+      '<div class="notice">Gagal memuat materi: ' +
+      escapeHTML(error.message) + '</div>';
+  }
+}
+
+function renderReader(data) {
+  const materi = data.materi;
+  const konten = sortData(data.konten || []);
+
+  let html = `
+    <div class="content-note">
+      ${escapeHTML(selectedClass.NAMA_KELAS)} •
+      ${escapeHTML(selectedSubject.NAMA_MAPEL)}
+    </div>
+    <h1>${escapeHTML(materi.JUDUL_MATERI)}</h1>
+    <p>${escapeHTML(materi.RINGKASAN || '')}</p>
+    <hr style="border:0;border-top:1px solid #E5ECF4;margin:22px 0">
+    <div class="reader-content">
+  `;
+
+  if (!konten.length) {
+    html += '<div class="notice">Konten materi belum tersedia.</div>';
+  }
+
+  konten.forEach(item => {
+    const type = String(item.JENIS_KONTEN || '').toUpperCase();
+    const value = String(item.KONTEN || '').trim();
+
+    html += '<section class="content-block">';
+
+    if (item.JUDUL_KONTEN) {
+      html += '<h3>' + escapeHTML(item.JUDUL_KONTEN) + '</h3>';
+    }
+
+    if (type === 'TEXT') {
+      html += '<p>' + escapeHTML(value) + '</p>';
+    }
+
+    else if (type === 'IMAGE') {
+      const imageUrl = driveImageUrl(value);
+      html += `<img src="${escapeHTML(imageUrl)}"
+        alt="${escapeHTML(item.JUDUL_KONTEN || 'Gambar materi')}"
+        loading="lazy"
+        onerror="this.outerHTML='<p>Gambar tidak dapat ditampilkan. Periksa izin Google Drive.</p>'">`;
+    }
+
+    else if (type === 'PDF') {
+      const pdfUrl = drivePreviewUrl(value);
+      html += `<iframe class="pdf-frame"
+        src="${escapeHTML(pdfUrl)}"
+        loading="lazy"
+        allow="autoplay"></iframe>
+        <p><a href="${escapeHTML(value)}" target="_blank" rel="noopener">
+        Buka PDF di tab baru</a></p>`;
+    }
+
+    else if (type === 'VIDEO') {
+      const videoUrl = youtubeEmbedUrl(value) || drivePreviewUrl(value);
+      html += `<iframe src="${escapeHTML(videoUrl)}"
+        loading="lazy"
+        allowfullscreen></iframe>`;
+    }
+
+    else {
+      html += '<p>' + escapeHTML(value) + '</p>';
+    }
+
+    if (item.KETERANGAN) {
+      html += '<p class="content-note">' +
+        escapeHTML(item.KETERANGAN) + '</p>';
+    }
+
+    html += '</section>';
+  });
+
+  html += '</div>';
+  html += `
+    <hr style="border:0;border-top:1px solid #E5ECF4;margin:25px 0">
+    <button class="back-button" onclick="backToMaterials()">
+      ← Kembali ke daftar materi
+    </button>
+  `;
+
+  el('reader').innerHTML = html;
+}
+
+
+/* DRIVE AND VIDEO HELPERS */
+
+function getDriveId(url) {
+  const match = String(url).match(
+    /\/d\/([a-zA-Z0-9_-]+)|[?&]id=([a-zA-Z0-9_-]+)/
+  );
+  return match ? (match[1] || match[2]) : null;
+}
+
+function driveImageUrl(url) {
+  const id = getDriveId(url);
+  return id
+    ? 'https://drive.google.com/uc?export=view&id=' + id
+    : url;
+}
+
+function drivePreviewUrl(url) {
+  const id = getDriveId(url);
+  return id
+    ? 'https://drive.google.com/file/d/' + id + '/preview'
+    : url;
+}
+
+function youtubeEmbedUrl(url) {
+  const text = String(url);
+
+  let id = null;
+
+  if (text.includes('youtu.be/')) {
+    id = text.split('youtu.be/')[1].split(/[?&]/)[0];
+  } else if (text.includes('youtube.com')) {
+    try {
+      const parsed = new URL(text);
+      id = parsed.searchParams.get('v');
+
+      if (!id && parsed.pathname.includes('/embed/')) {
+        id = parsed.pathname.split('/embed/')[1];
+      }
+
+      if (!id && parsed.pathname.includes('/shorts/')) {
+        id = parsed.pathname.split('/shorts/')[1];
+      }
+    } catch(e) {}
+  }
+
+  return id
+    ? 'https://www.youtube.com/embed/' + id
+    : null;
+}
+
+
+/* NAVIGATION */
+
+function backToMaterials() {
+  el('readerPage').classList.add('hidden');
+  el('homePage').classList.remove('hidden');
+  el('materialSection').scrollIntoView({behavior:'smooth'});
+}
+
+function goHome() {
+  selectedClass = null;
+  selectedSubject = null;
+  selectedChapter = null;
+  selectedMaterial = null;
+
+  el('readerPage').classList.add('hidden');
+  el('homePage').classList.remove('hidden');
+  el('subjectSection').classList.add('hidden');
+  el('chapterSection').classList.add('hidden');
+  el('materialSection').classList.add('hidden');
+
+  renderClasses();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
