@@ -2,845 +2,647 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f4f8ff">
-  <title>Materi Belajar | Genius Kecil</title>
-  <style>
-    :root {
-      --blue: #15549a;
-      --blue-dark: #103f76;
-      --blue-light: #e8f1ff;
-      --yellow: #ffd84d;
-      --orange: #f15a24;
-      --bg: #f4f8ff;
-      --white: #ffffff;
-      --text: #172b45;
-      --muted: #718096;
-      --border: #dce6f2;
-      --shadow: 0 5px 18px rgba(28, 66, 112, .06);
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f8ff">
+<title>Materi Belajar | Genius Kecil</title>
 
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 15px;
-    }
-
-    header {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .header-inner {
-      max-width: 1120px;
-      min-height: 76px;
-      margin: auto;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .brand img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-      border-radius: 10px;
-    }
-
-    .brand-name {
-      color: var(--blue);
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -.4px;
-    }
-
-    .brand-tagline {
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 1.5px;
-      margin-top: 3px;
-    }
-
-    .home-link {
-      text-decoration: none;
-      color: var(--blue);
-      background: var(--blue-light);
-      border-radius: 12px;
-      padding: 11px 17px;
-      font-weight: 700;
-    }
-
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 28px 20px 60px;
-    }
-
-    .intro {
-      margin-bottom: 25px;
-    }
-
-    .intro h1 {
-      margin: 0 0 8px;
-      color: var(--blue);
-      font-size: 27px;
-    }
-
-    .intro p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .panel {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      margin-bottom: 24px;
-    }
-
-    .field-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .field {
-      min-width: 0;
-    }
-
-    .field label {
-      display: block;
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 9px;
-    }
-
-    .select-wrap {
-      position: relative;
-    }
-
-    .select-wrap::after {
-      content: "⌄";
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-55%);
-      color: var(--blue);
-      font-size: 21px;
-      pointer-events: none;
-    }
-
-    select {
-      appearance: none;
-      -webkit-appearance: none;
-      width: 100%;
-      min-height: 48px;
-      padding: 12px 42px 12px 15px;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: #fbfdff;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 600;
-      outline: none;
-      cursor: pointer;
-    }
-
-    select:focus {
-      border-color: #4389dc;
-      box-shadow: 0 0 0 3px rgba(67, 137, 220, .12);
-    }
-
-    select:disabled {
-      color: #9aa8b8;
-      background: #f2f5f9;
-      cursor: not-allowed;
-    }
-
-    .section-title {
-      color: var(--blue);
-      font-size: 20px;
-      margin: 28px 0 6px;
-    }
-
-    .section-desc {
-      color: var(--muted);
-      margin: 0 0 17px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .item-card {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 18px;
-      cursor: pointer;
-      color: var(--text);
-      box-shadow: var(--shadow);
-      transition: border-color .15s, transform .15s;
-    }
-
-    .item-card:hover {
-      border-color: #7eafe7;
-      transform: translateY(-2px);
-    }
-
-    .item-card strong {
-      display: block;
-      color: var(--blue-dark);
-      font-size: 15px;
-      line-height: 1.45;
-      margin-bottom: 7px;
-    }
-
-    .item-card small {
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    .reader {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 24px;
-      margin-top: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .reader h2 {
-      color: var(--blue);
-      margin: 0 0 8px;
-      line-height: 1.35;
-    }
-
-    .reader-content {
-      line-height: 1.8;
-      overflow-wrap: anywhere;
-    }
-
-    .reader-content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-
-    .reader-content iframe {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
-      border-radius: 10px;
-    }
-
-    .content-block {
-      padding: 15px 0;
-      border-bottom: 1px solid #edf1f6;
-    }
-
-    .content-block:last-child {
-      border-bottom: 0;
-    }
-
-    .content-block h3 {
-      color: var(--blue-dark);
-      font-size: 16px;
-      margin: 0 0 10px;
-    }
-
-    .content-block p {
-      margin: 0;
-      white-space: pre-wrap;
-    }
-
-    .back-button {
-      border: 0;
-      background: var(--blue-light);
-      color: var(--blue);
-      padding: 10px 15px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 18px;
-    }
-
-    .message {
-      background: var(--white);
-      border: 1px dashed #b9cce2;
-      border-radius: 14px;
-      padding: 22px;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .hidden { display: none !important; }
-
-    .loading {
-      text-align: center;
-      padding: 25px;
-      color: var(--muted);
-    }
-
-    .error { color: #b42318; }
-
-    footer {
-      text-align: center;
-      padding: 22px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    @media (max-width: 700px) {
-      .header-inner { min-height: 66px; padding: 9px 15px; }
-      .brand img { width: 42px; height: 42px; }
-      .brand-name { font-size: 18px; }
-      .home-link { padding: 9px 12px; font-size: 13px; }
-      main { padding: 22px 15px 45px; }
-      .intro h1 { font-size: 23px; }
-      .panel { padding: 17px; }
-      .field-grid { grid-template-columns: 1fr; gap: 15px; }
-      .grid { grid-template-columns: 1fr; gap: 10px; }
-      .item-card { padding: 16px; }
-      .reader { padding: 18px; }
-    }
-  </style>
+<style>
+:root{
+  --blue:#15549a;
+  --dark:#103f76;
+  --bg:#f4f8ff;
+  --white:#fff;
+  --text:#172b45;
+  --muted:#718096;
+  --border:#dce6f2;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+}
+header{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:5;
+}
+.header{
+  max-width:1120px;
+  margin:auto;
+  padding:10px 20px;
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+}
+.brand img{
+  width:48px;
+  height:48px;
+  object-fit:contain;
+}
+.brand b{
+  display:block;
+  color:var(--blue);
+  font-size:20px;
+}
+.brand small{
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:1.4px;
+  margin-top:3px;
+}
+.home{
+  background:#e8f1ff;
+  color:var(--blue);
+  padding:11px 16px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+main{
+  max-width:1120px;
+  margin:auto;
+  padding:28px 20px 60px;
+}
+h1{
+  color:var(--blue);
+  font-size:26px;
+  margin:0 0 8px;
+}
+.subtitle{
+  color:var(--muted);
+  margin:0 0 24px;
+}
+.panel,.reader{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:20px;
+  margin-bottom:24px;
+}
+.fields{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.field label{
+  display:block;
+  color:var(--dark);
+  font-size:13px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+select{
+  width:100%;
+  height:48px;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:#fbfdff;
+  padding:0 13px;
+  color:var(--text);
+  font-size:14px;
+}
+select:focus{
+  outline:2px solid #b9d6fa;
+}
+.section-title{
+  color:var(--blue);
+  font-size:20px;
+  margin:28px 0 7px;
+}
+.desc{
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 16px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:13px;
+}
+.card{
+  border:1px solid var(--border);
+  background:white;
+  border-radius:14px;
+  padding:17px;
+  text-align:left;
+  cursor:pointer;
+  min-height:85px;
+}
+.card:hover{border-color:#7eafe7}
+.card strong{
+  display:block;
+  color:var(--dark);
+  font-size:15px;
+  line-height:1.5;
+}
+.card small{
+  display:block;
+  color:var(--muted);
+  margin-top:6px;
+  line-height:1.4;
+}
+.reader h2{
+  color:var(--blue);
+  margin-top:0;
+}
+.content{
+  line-height:1.8;
+  overflow-wrap:anywhere;
+}
+.content img{
+  max-width:100%;
+  height:auto;
+  border-radius:10px;
+}
+.content iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:10px;
+}
+.content video{
+  width:100%;
+  max-height:500px;
+}
+.back{
+  border:0;
+  border-radius:10px;
+  padding:10px 15px;
+  background:#e8f1ff;
+  color:var(--blue);
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:18px;
+}
+.message{
+  background:#fff;
+  border:1px dashed #b9cce2;
+  border-radius:13px;
+  padding:22px;
+  text-align:center;
+  color:var(--muted);
+  line-height:1.6;
+}
+.hidden{display:none!important}
+.loading{
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+footer{
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  padding:22px;
+}
+@media(max-width:700px){
+  .header{padding:9px 14px}
+  .brand img{width:42px;height:42px}
+  .brand b{font-size:17px}
+  .home{font-size:13px;padding:9px 12px}
+  main{padding:22px 15px 45px}
+  h1{font-size:23px}
+  .fields,.grid{grid-template-columns:1fr}
+  .panel{padding:16px}
+}
+</style>
 </head>
 
 <body>
+
 <header>
-  <div class="header-inner">
+  <div class="header">
     <a class="brand" href="./">
       <img
         src="https://raw.githubusercontent.com/genius-kecil/genius-kecil-portal/main/logo-genius-kecil.png"
-        alt="Logo Genius Kecil"
-        width="48"
-        height="48"
+        alt="Genius Kecil"
       >
-      <div>
-        <div class="brand-name">GENIUS KECIL</div>
-        <div class="brand-tagline">TEMAN BELAJAR KITA</div>
-      </div>
+      <span>
+        <b>GENIUS KECIL</b>
+        <small>TEMAN BELAJAR KITA</small>
+      </span>
     </a>
-    <a class="home-link" href="https://genius-kecil-portal.rt2000-innovation.workers.dev/">
+
+    <a class="home" href="https://genius-kecil-portal.rt2000-innovation.workers.dev/">
       Beranda
     </a>
   </div>
 </header>
 
 <main>
-  <section class="intro">
-    <h1>Materi Pembelajaran</h1>
-    <p>Yuk, pilih jenjang pendidikan dan mulai belajar bersama Genius Kecil!</p>
-  </section>
+
+  <h1>Materi Pembelajaran</h1>
+  <p class="subtitle">
+    Yuk, pilih jenjang pendidikan dan mulai belajar!
+  </p>
 
   <section class="panel">
-    <div class="field-grid">
+    <div class="fields">
+
       <div class="field">
         <label for="jenjang">Jenjang Pendidikan</label>
-        <div class="select-wrap">
-          <select id="jenjang">
-            <option value="">Memuat jenjang...</option>
-          </select>
-        </div>
+        <select id="jenjang">
+          <option value="">Memuat jenjang...</option>
+        </select>
       </div>
 
-      <div class="field hidden" id="kelasField">
-        <label for="kelas">Pilih Kelas</label>
-        <div class="select-wrap">
-          <select id="kelas" disabled>
-            <option value="">Pilih kelas</option>
-          </select>
-        </div>
+      <div class="field hidden" id="kelasBox">
+        <label for="kelas">Kelas</label>
+        <select id="kelas">
+          <option value="">Pilih kelas</option>
+        </select>
       </div>
 
-      <div class="field hidden" id="mapelField">
+      <div class="field hidden" id="mapelBox">
         <label for="mapel">Mata Pelajaran</label>
-        <div class="select-wrap">
-          <select id="mapel" disabled>
-            <option value="">Pilih mata pelajaran</option>
-          </select>
-        </div>
+        <select id="mapel">
+          <option value="">Pilih mata pelajaran</option>
+        </select>
       </div>
+
     </div>
   </section>
 
-  <section id="results" class="hidden">
-    <h2 class="section-title" id="resultTitle">Daftar Materi</h2>
-    <p class="section-desc" id="resultDesc"></p>
-    <div id="resultList" class="grid"></div>
+  <section id="listing" class="hidden">
+    <h2 class="section-title" id="listTitle">Daftar Materi</h2>
+    <p class="desc" id="listDesc"></p>
+    <div id="list" class="grid"></div>
   </section>
 
   <section id="reader" class="reader hidden">
-    <button class="back-button" id="backButton">← Kembali ke daftar</button>
-    <div id="readerBody"></div>
+    <button class="back" id="back">← Kembali</button>
+    <div id="readerContent" class="content"></div>
   </section>
 
-  <div id="status" class="message hidden"></div>
+  <div id="status" class="message">
+    Menghubungkan ke database materi...
+  </div>
+
 </main>
 
-<footer>
-  Genius Kecil · Teman Belajar Kita
-</footer>
+<footer>Genius Kecil · Teman Belajar Kita</footer>
 
 <script>
-  const API_URL = "https://script.google.com/macros/s/AKfycbzJMuCRyo2nCvXzdE76zxZ1wtnKRet9BTlYIjGIsCegrKpILCQL9JRjosDvXzlQVvKP/exec";
-
-  const $ = id => document.getElementById(id);
-
-  let selectedJenjang = "";
-  let selectedKelas = "";
-  let selectedMapel = "";
-  let currentBabList = [];
-  let currentView = "bab";
-
-  const cache = new Map();
-
-  function apiRequest(params) {
-    const query = new URLSearchParams(params).toString();
-    const cacheKey = query;
-
-    if (cache.has(cacheKey)) {
-      return Promise.resolve(cache.get(cacheKey));
-    }
-
-    return new Promise((resolve, reject) => {
-      const callbackName = "gkCallback_" + Date.now() + "_" +
-        Math.floor(Math.random() * 100000);
-
-      const script = document.createElement("script");
-      const timeout = setTimeout(() => {
-        cleanup();
-        reject(new Error("Koneksi terlalu lama. Silakan coba kembali."));
-      }, 20000);
-
-      function cleanup() {
-        clearTimeout(timeout);
-        delete window[callbackName];
-        script.remove();
-      }
-
-      window[callbackName] = result => {
-        cleanup();
-
-        if (!result || result.status !== "success") {
-          reject(new Error(result?.message || "Data tidak berhasil dimuat."));
-          return;
-        }
-
-        cache.set(cacheKey, result);
-        resolve(result);
-      };
-
-      script.onerror = () => {
-        cleanup();
-        reject(new Error("Gagal menghubungi database. Periksa koneksi internet."));
-      };
-
-      script.src = API_URL + "?" + query +
-        "&callback=" + callbackName;
-
-      document.body.appendChild(script);
-    });
-  }
-
-  function showStatus(message, isError = false) {
-    $("status").textContent = message;
-    $("status").classList.remove("hidden", "error");
-    if (isError) $("status").classList.add("error");
-  }
-
-  function hideStatus() {
-    $("status").classList.add("hidden");
-  }
-
-  function showLoading(message = "Sedang memuat data...") {
-    $("results").classList.remove("hidden");
-    $("resultList").innerHTML =
-      '<div class="loading">' + escapeHtml(message) + '</div>';
-    $("reader").classList.add("hidden");
-    hideStatus();
-  }
-
-  function escapeHtml(value) {
-    return String(value ?? "").replace(/[&<>"']/g, char => ({
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;"
-    })[char]);
-  }
-
-  function getData(result) {
-    return Array.isArray(result?.data) ? result.data : [];
-  }
-
-  function fillSelect(select, items, valueField, labelField, placeholder) {
-    select.innerHTML = "";
-
-    const first = document.createElement("option");
-    first.value = "";
-    first.textContent = placeholder;
-    select.appendChild(first);
-
-    items.forEach(item => {
-      const option = document.createElement("option");
-      option.value = item[valueField];
-      option.textContent = item[labelField];
-      select.appendChild(option);
-    });
-
-    select.disabled = items.length === 0;
-  }
-
-  async function init() {
-    try {
-      const result = await apiRequest({ action: "init" });
-      const jenjang = result.data?.jenjang || [
-        { ID_JENJANG: "PAUD-KB-TK", NAMA_JENJANG: "PAUD - KB - TK" },
-        { ID_JENJANG: "SD", NAMA_JENJANG: "Sekolah Dasar" }
-      ];
-
-      $("jenjang").innerHTML = '<option value="">Pilih jenjang pendidikan</option>';
-
-      jenjang.forEach(item => {
-        const option = document.createElement("option");
-        option.value = item.ID_JENJANG;
-        option.textContent = item.NAMA_JENJANG;
-        $("jenjang").appendChild(option);
-      });
-
-      hideStatus();
-    } catch (error) {
-      // Fallback pilihan jenjang jika endpoint init belum menyediakan data jenjang.
-      $("jenjang").innerHTML = `
-        <option value="">Pilih jenjang pendidikan</option>
-        <option value="PAUD-KB-TK">PAUD - KB - TK</option>
-        <option value="SD">Sekolah Dasar</option>
-      `;
-      showStatus(error.message, true);
-    }
-  }
-
-  function resetResults() {
-    $("results").classList.add("hidden");
-    $("reader").classList.add("hidden");
-    $("resultList").innerHTML = "";
-    $("readerBody").innerHTML = "";
-    hideStatus();
-  }
-
-  async function loadKelas() {
-    showLoading("Memuat daftar kelas...");
-
-    try {
-      const result = await apiRequest({ action: "kelas" });
-      const kelas = getData(result).filter(item =>
-        String(item.JENJANG || "").toUpperCase() === "SD"
-      );
-
-      fillSelect($("kelas"), kelas, "ID_KELAS", "NAMA_KELAS", "Pilih kelas");
-      $("kelas").disabled = false;
-      $("kelasField").classList.remove("hidden");
-      $("mapelField").classList.remove("hidden");
-
-      $("resultTitle").textContent = "Materi Sekolah Dasar";
-      $("resultDesc").textContent = "Pilih kelas dan mata pelajaran untuk melihat materi.";
-      $("resultList").innerHTML = "";
-      $("results").classList.add("hidden");
-      hideStatus();
-    } catch (error) {
-      showStatus(error.message, true);
-    }
-  }
-
-  async function loadMapel() {
-    selectedKelas = $("kelas").value;
-    selectedMapel = "";
-
-    fillSelect($("mapel"), [], "ID_MAPEL", "NAMA_MAPEL", "Memuat mata pelajaran...");
-    $("mapel").disabled = true;
-    resetResults();
-
-    if (!selectedKelas) return;
-
-    try {
-      const result = await apiRequest({
-        action: "mapel",
-        kelas: selectedKelas
-      });
-
-      const mapel = getData(result);
-      fillSelect($("mapel"), mapel, "ID_MAPEL", "NAMA_MAPEL", "Pilih mata pelajaran");
-      $("mapel").disabled = false;
-    } catch (error) {
-      showStatus(error.message, true);
-    }
-  }
-
-  async function loadBab(kelasId, mapelId, title) {
-    showLoading("Memuat daftar materi...");
-
-    try {
-      const params = {
-        action: "bab",
-        kelas: kelasId
-      };
-
-      if (mapelId) params.mapel = mapelId;
-
-      const result = await apiRequest(params);
-      currentBabList = getData(result);
-      currentView = "bab";
-
-      $("resultTitle").textContent = title;
-      $("resultDesc").textContent = "Pilih topik untuk melihat materi pembelajaran.";
-      renderBab(currentBabList);
-      hideStatus();
-    } catch (error) {
-      showStatus(error.message, true);
-    }
-  }
-
-  function renderBab(items) {
-    $("results").classList.remove("hidden");
-    $("reader").classList.add("hidden");
-
-    if (!items.length) {
-      $("resultList").innerHTML =
-        '<div class="message">Belum ada materi yang tersedia. Materi akan segera ditambahkan.</div>';
-      return;
-    }
-
-    $("resultList").innerHTML = items.map(item => `
-      <button class="item-card" data-id="${escapeHtml(item.ID_BAB)}">
-        <strong>${escapeHtml(item.NAMA_BAB)}</strong>
-        <small>${escapeHtml(item.DESKRIPSI || "Lihat materi pembelajaran")}</small>
-      </button>
-    `).join("");
-
-    $("resultList").querySelectorAll(".item-card").forEach(button => {
-      button.addEventListener("click", () => {
-        loadMateri(button.dataset.id, button.querySelector("strong").textContent);
-      });
-    });
-  }
-
-  async function loadMateri(babId, babTitle) {
-    showLoading("Memuat materi pembelajaran...");
-
-    try {
-      const result = await apiRequest({
-        action: "materi",
-        bab: babId
-      });
-
-      const materi = getData(result);
-      currentView = "materi";
-
-      $("resultTitle").textContent = babTitle;
-      $("resultDesc").textContent = "Pilih materi yang ingin dipelajari.";
-      renderMateri(materi);
-      hideStatus();
-    } catch (error) {
-      showStatus(error.message, true);
-    }
-  }
-
-  function renderMateri(items) {
-    $("results").classList.remove("hidden");
-    $("reader").classList.add("hidden");
-
-    if (!items.length) {
-      $("resultList").innerHTML =
-        '<div class="message">Belum ada materi pada bab ini.</div>';
-      return;
-    }
-
-    $("resultList").innerHTML = items.map(item => `
-      <button class="item-card" data-id="${escapeHtml(item.ID_MATERI)}">
-        <strong>${escapeHtml(item.JUDUL_MATERI)}</strong>
-        <small>${escapeHtml(item.RINGKASAN || "Buka materi pembelajaran")}</small>
-      </button>
-    `).join("");
-
-    $("resultList").querySelectorAll(".item-card").forEach(button => {
-      button.addEventListener("click", () => {
-        const item = items.find(x => String(x.ID_MATERI) === button.dataset.id);
-        loadDetail(button.dataset.id, item?.JUDUL_MATERI || "Materi");
-      });
-    });
-  }
-
-  async function loadDetail(id, title) {
-    showLoading("Membuka materi...");
-
-    try {
-      const result = await apiRequest({
-        action: "detail",
-        id: id
-      });
-
-      const detail = result.data || {};
-      const materi = detail.materi || {};
-      const konten = Array.isArray(detail.konten) ? detail.konten : [];
-
-      $("results").classList.add("hidden");
-      $("reader").classList.remove("hidden");
-
-      let html = `
-        <h2>${escapeHtml(materi.JUDUL_MATERI || title)}</h2>
-        <p class="section-desc">${escapeHtml(materi.RINGKASAN || "")}</p>
-      `;
-
-      if (!konten.length) {
-        html += '<div class="message">Konten materi belum tersedia.</div>';
-      }
-
-      konten.forEach(item => {
-        html += renderContent(item);
-      });
-
-      $("readerBody").innerHTML = html;
-      hideStatus();
-      $("reader").scrollIntoView({ behavior: "smooth", block: "start" });
-    } catch (error) {
-      showStatus(error.message, true);
-    }
-  }
-
-  function renderContent(item) {
-    const type = String(item.JENIS_KONTEN || "TEXT").toUpperCase();
-    const title = item.JUDUL_KONTEN
-      ? `<h3>${escapeHtml(item.JUDUL_KONTEN)}</h3>`
-      : "";
-    const value = String(item.KONTEN || "").trim();
-
-    let body = "";
-
-    if (type === "IMAGE") {
-      body = `<img src="${escapeHtml(value)}" alt="${escapeHtml(item.JUDUL_KONTEN || "Gambar materi")}" loading="lazy">`;
-    } else if (type === "PDF") {
-      const url = drivePreviewUrl(value);
-      body = `<iframe src="${escapeHtml(url)}" loading="lazy" title="Materi PDF"></iframe>
-        <p><a href="${escapeHtml(value)}" target="_blank" rel="noopener">Buka PDF di tab baru</a></p>`;
-    } else if (type === "VIDEO") {
-      const url = youtubeEmbedUrl(value);
-      body = url
-        ? `<iframe src="${escapeHtml(url)}" loading="lazy" allowfullscreen title="Video pembelajaran"></iframe>`
-        : `<p><a href="${escapeHtml(value)}" target="_blank" rel="noopener">Tonton video pembelajaran</a></p>`;
-    } else {
-      body = `<p>${escapeHtml(value)}</p>`;
-    }
-
-    return `<div class="content-block">${title}${body}</div>`;
-  }
-
-  function drivePreviewUrl(url) {
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) ||
-      url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
-
-    return match
-      ? "https://drive.google.com/file/d/" + match[1] + "/preview"
-      : url;
-  }
-
-  function youtubeEmbedUrl(url) {
-    let match = url.match(/youtu\.be\/([a-zA-Z0-9_-]+)/);
-    if (!match) match = url.match(/[?&]v=([a-zA-Z0-9_-]+)/);
-    if (!match) match = url.match(/youtube\.com\/embed\/([a-zA-Z0-9_-]+)/);
-
-    return match
-      ? "https://www.youtube.com/embed/" + match[1]
-      : "";
-  }
-
-  $("jenjang").addEventListener("change", async () => {
-    selectedJenjang = $("jenjang").value;
-    selectedKelas = "";
-    selectedMapel = "";
-
-    resetResults();
-
-    $("kelasField").classList.add("hidden");
-    $("mapelField").classList.add("hidden");
-
-    fillSelect($("kelas"), [], "ID_KELAS", "NAMA_KELAS", "Pilih kelas");
-    fillSelect($("mapel"), [], "ID_MAPEL", "NAMA_MAPEL", "Pilih mata pelajaran");
-
-    if (selectedJenjang === "PAUD-KB-TK") {
-      // PAUD langsung ke katalog: tanpa kelas dan tanpa mata pelajaran.
-      await loadBab(
-        "PAUD-KB-TK",
-        "",
-        "Materi PAUD - KB - TK"
-      );
-    } else if (selectedJenjang === "SD") {
-      await loadKelas();
-    }
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxB8_JF6PrDj0TLbOff1VYLtfvTQ7w6Pf_xDY8JszolRviRljgNJPcZ9AJPPGZDEQZBXg/exec";
+
+const $ = id => document.getElementById(id);
+
+let dataMateri = [];
+let currentItems = [];
+let selectedJenjang = "";
+let selectedBab = "";
+let selectedView = "bab";
+
+function esc(value){
+  return String(value ?? "").replace(/[&<>"']/g,c=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[c]));
+}
+
+function status(message){
+  $("status").textContent = message;
+  $("status").classList.remove("hidden");
+}
+
+function hideStatus(){
+  $("status").classList.add("hidden");
+}
+
+function unique(values){
+  return [...new Set(
+    values.map(v=>String(v||"").trim()).filter(Boolean)
+  )];
+}
+
+function fill(id,values,placeholder){
+  const el=$(id);
+  el.innerHTML="";
+
+  const first=document.createElement("option");
+  first.value="";
+  first.textContent=placeholder;
+  el.appendChild(first);
+
+  values.forEach(value=>{
+    const op=document.createElement("option");
+    op.value=value;
+    op.textContent=value;
+    el.appendChild(op);
   });
+}
 
-  $("kelas").addEventListener("change", loadMapel);
+function loadAPI(){
+  const callback="gkData_"+Date.now();
+  const script=document.createElement("script");
 
-  $("mapel").addEventListener("change", async () => {
-    selectedMapel = $("mapel").value;
+  const timer=setTimeout(()=>{
+    delete window[callback];
+    script.remove();
+    status("Koneksi database terlalu lama. Silakan muat ulang halaman.");
+  },20000);
 
-    if (!selectedKelas || !selectedMapel) {
-      resetResults();
+  window[callback]=result=>{
+    clearTimeout(timer);
+    delete window[callback];
+    script.remove();
+
+    if(!result || result.status!=="success"){
+      status(result?.message || "Gagal mengambil data.");
       return;
     }
 
-    const kelasName = $("kelas").selectedOptions[0]?.textContent || "";
-    const mapelName = $("mapel").selectedOptions[0]?.textContent || "";
+    dataMateri=result.data || [];
+    initFilters();
+    hideStatus();
+  };
 
-    await loadBab(
-      selectedKelas,
-      selectedMapel,
-      kelasName + " · " + mapelName
+  script.onerror=()=>{
+    clearTimeout(timer);
+    delete window[callback];
+    script.remove();
+    status("Tidak dapat menghubungi API Google Sheets.");
+  };
+
+  script.src=API_URL+"?callback="+callback;
+  document.body.appendChild(script);
+}
+
+function initFilters(){
+  const jenjang=unique(dataMateri.map(x=>x.jenjang));
+  fill("jenjang",jenjang,"Pilih jenjang");
+}
+
+function resetListing(){
+  $("listing").classList.add("hidden");
+  $("reader").classList.add("hidden");
+  $("list").innerHTML="";
+}
+
+function showBab(){
+  const kelas=$("kelas").value;
+  const mapel=$("mapel").value;
+
+  let rows=dataMateri.filter(x=>x.jenjang===selectedJenjang);
+
+  if(selectedJenjang.toUpperCase()==="SD"){
+    if(!kelas || !mapel){
+      resetListing();
+      return;
+    }
+
+    rows=rows.filter(x=>
+      x.kelas===kelas &&
+      x.mata_pelajaran===mapel
     );
+  }
+
+  const bab=unique(rows.map(x=>x.bab));
+
+  currentItems=bab;
+  selectedView="bab";
+
+  $("listTitle").textContent=
+    selectedJenjang.toUpperCase()==="SD"
+    ? "Bab Pembelajaran"
+    : "Materi PAUD - KB - TK";
+
+  $("listDesc").textContent=
+    "Pilih bab untuk melihat daftar materi.";
+
+  renderCards(bab,openBab);
+}
+
+function openBab(bab){
+  selectedBab=bab;
+
+  let rows=dataMateri.filter(x=>
+    x.jenjang===selectedJenjang &&
+    x.bab===bab
+  );
+
+  if(selectedJenjang.toUpperCase()==="SD"){
+    rows=rows.filter(x=>
+      x.kelas===$("kelas").value &&
+      x.mata_pelajaran===$("mapel").value
+    );
+  }
+
+  currentItems=rows;
+  selectedView="materi";
+
+  $("listTitle").textContent=bab;
+  $("listDesc").textContent=
+    "Pilih materi yang ingin dipelajari.";
+
+  renderCards(
+    rows.map(x=>x.judul).filter(Boolean),
+    openMateri
+  );
+}
+
+function renderCards(items,callback){
+  $("listing").classList.remove("hidden");
+  $("reader").classList.add("hidden");
+
+  if(!items.length){
+    $("list").innerHTML=
+      '<div class="message">Materi belum tersedia.</div>';
+    return;
+  }
+
+  $("list").innerHTML=items.map((item,i)=>`
+    <button class="card" data-index="${i}">
+      <strong>${esc(item)}</strong>
+      <small>
+        ${selectedView==="bab"?"Lihat materi →":"Buka materi →"}
+      </small>
+    </button>
+  `).join("");
+
+  $("list").querySelectorAll(".card").forEach((button,i)=>{
+    button.addEventListener("click",()=>{
+      callback(items[i]);
+    });
   });
+}
 
-  $("backButton").addEventListener("click", () => {
-    $("reader").classList.add("hidden");
+function openMateri(judul){
+  const item=currentItems.find(x=>x.judul===judul);
+  if(!item)return;
 
-    if (currentView === "materi") {
-      // Kembali dari detail ke daftar materi.
-      $("results").classList.remove("hidden");
-    } else {
-      $("results").classList.remove("hidden");
+  $("listing").classList.add("hidden");
+  $("reader").classList.remove("hidden");
+
+  $("readerContent").innerHTML=`
+    <h2>${esc(item.judul)}</h2>
+    ${renderContent(item.link_konten)}
+  `;
+
+  $("reader").scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+}
+
+function renderContent(value){
+  const v=String(value||"").trim();
+
+  if(!v){
+    return '<div class="message">Konten belum tersedia.</div>';
+  }
+
+  const urlMatch=v.match(/https?:\/\/[^\s]+/i);
+
+  if(!urlMatch){
+    return `<p>${esc(v)}</p>`;
+  }
+
+  const url=urlMatch[0];
+  const lower=url.toLowerCase();
+
+  if(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/.test(lower)){
+    return `
+      <img src="${esc(url)}"
+           alt="Gambar materi"
+           loading="lazy">
+    `;
+  }
+
+  if(/drive\.google\.com/.test(lower)){
+    const id=
+      url.match(/\/d\/([^/]+)/)?.[1] ||
+      url.match(/[?&]id=([^&]+)/)?.[1];
+
+    if(id){
+      return `
+        <iframe
+          src="https://drive.google.com/file/d/${esc(id)}/preview"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+        <p>
+          <a href="${esc(url)}" target="_blank" rel="noopener">
+            Buka file
+          </a>
+        </p>
+      `;
     }
-  });
+  }
 
-  init();
+  if(/youtu\.be|youtube\.com/.test(lower)){
+    const id=
+      url.match(/youtu\.be\/([^?&/]+)/)?.[1] ||
+      url.match(/[?&]v=([^&]+)/)?.[1] ||
+      url.match(/youtube\.com\/embed\/([^?&/]+)/)?.[1];
+
+    if(id){
+      return `
+        <iframe
+          src="https://www.youtube.com/embed/${esc(id)}"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      `;
+    }
+  }
+
+  if(/\.pdf(\?.*)?$/.test(lower)){
+    return `
+      <iframe src="${esc(url)}" loading="lazy"></iframe>
+      <p>
+        <a href="${esc(url)}" target="_blank" rel="noopener">
+          Buka PDF
+        </a>
+      </p>
+    `;
+  }
+
+  if(/\.(mp4|webm|ogg)(\?.*)?$/.test(lower)){
+    return `
+      <video controls playsinline src="${esc(url)}"></video>
+    `;
+  }
+
+  return `
+    <p>
+      <a href="${esc(url)}" target="_blank" rel="noopener">
+        Buka konten pembelajaran
+      </a>
+    </p>
+  `;
+}
+
+$("jenjang").addEventListener("change",()=>{
+  selectedJenjang=$("jenjang").value;
+
+  resetListing();
+
+  $("kelasBox").classList.add("hidden");
+  $("mapelBox").classList.add("hidden");
+
+  if(!selectedJenjang)return;
+
+  if(selectedJenjang.toUpperCase()==="SD"){
+    const rows=dataMateri.filter(x=>
+      x.jenjang===selectedJenjang
+    );
+
+    fill(
+      "kelas",
+      unique(rows.map(x=>x.kelas)),
+      "Pilih kelas"
+    );
+
+    $("kelasBox").classList.remove("hidden");
+
+  }else{
+    showBab();
+  }
+});
+
+$("kelas").addEventListener("change",()=>{
+  resetListing();
+
+  const rows=dataMateri.filter(x=>
+    x.jenjang===selectedJenjang &&
+    x.kelas===$("kelas").value
+  );
+
+  fill(
+    "mapel",
+    unique(rows.map(x=>x.mata_pelajaran)),
+    "Pilih mata pelajaran"
+  );
+
+  $("mapelBox").classList.remove("hidden");
+});
+
+$("mapel").addEventListener("change",showBab);
+
+$("back").addEventListener("click",()=>{
+  $("reader").classList.add("hidden");
+  $("listing").classList.remove("hidden");
+});
+
+loadAPI();
 </script>
 </body>
 </html>
